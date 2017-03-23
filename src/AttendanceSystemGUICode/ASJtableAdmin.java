@@ -1,3 +1,5 @@
+package AttendanceSystemGUICode;
+
 
 import javax.swing.table.DefaultTableModel;
 
@@ -214,7 +216,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
        DefaultTableModel model = (DefaultTableModel) jTable_TableAS.getModel();
        
        
-       model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jTextFieldCourse.getText(), jTextFieldModule.getText(), jTextFieldPaswd.getText() });
+      // model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jTextFieldCourse.getText(), jTextFieldModule.getText(), jTextFieldPaswd.getText() });
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     /**

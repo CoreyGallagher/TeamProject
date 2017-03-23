@@ -1,4 +1,4 @@
-package TeamProject;
+package AttendanceSystemGUICode;
 //package ie.lyit.database;
 
 import java.sql.Connection;
@@ -19,7 +19,7 @@ public class JDBCCreateDatabase {
 			try{
 				// STEP 1 - Load the JDBC driver
 				//          Initialize a driver to open a communications channel with the database.
-				Class.forName(JDBC_DRIVER);
+				//Class.forName(JDBC_DRIVER);
 				System.out.println("STEP 1 COMPLETE - Driver Registered...");
 				
 				// STEP 2 - Open a connection
@@ -56,9 +56,9 @@ public class JDBCCreateDatabase {
 		        stmt.executeUpdate(sql);
 		        System.out.println("STEP 4(c) COMPLETE - Query executed and data added to table..."); 
 			}
-			catch (ClassNotFoundException e){
-				System.out.println("Could not load driver.\n" + e.getMessage());
-			}
+			//catch (ClassNotFoundException e){
+			//	System.out.println("Could not load driver.\n" + e.getMessage());
+			//}
 			catch (SQLException e) {
 				System.out.println("Problem with SQL.\n" + e.getMessage());
 			}

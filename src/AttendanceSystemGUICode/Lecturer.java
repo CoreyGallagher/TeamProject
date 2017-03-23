@@ -1,4 +1,4 @@
-package teamProject;
+package AttendanceSystemGUICode;
 
 public class Lecturer extends User {
 	

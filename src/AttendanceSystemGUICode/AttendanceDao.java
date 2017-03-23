@@ -1,4 +1,4 @@
-package AttendanceSystem;
+package AttendanceSystemGUICode;
 
 public interface AttendanceDao {
 	// persistent methods

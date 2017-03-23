@@ -1,4 +1,4 @@
-package AttendanceSystem;
+package AttendanceSystemGUICode;
 import java.util.Scanner;
 
 public class AttendanceMenu extends AttendanceFileHandler {

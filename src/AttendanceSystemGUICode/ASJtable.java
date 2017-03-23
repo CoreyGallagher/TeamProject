@@ -1,4 +1,4 @@
-package attendance;
+package AttendanceSystemGUICode;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -242,7 +242,7 @@ public class ASJtable  extends javax.swing.JFrame {
        model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jComboBoxCourse.getSelectedItem(), jComboBoxModule.getSelectedItem(), jTextFieldPaswd.getText() });
     //GEN-LAST:event_jButtonAddActionPerformed
 
-        	ArrayList<Student> students = new ArrayList<>();
+        	/*ArrayList<Student> students = new ArrayList<>();
             Student s1 = new Student(jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jTextFieldPaswd.getText()); 
             students.add(s1);
             for (Student s : students) {
@@ -263,7 +263,7 @@ public class ASJtable  extends javax.swing.JFrame {
             courses.add(c1);
             for (Class c : courses) {
                 System.out.print(c + "\n");
-            }
+            }*/
         
     
     jButtonFinish.addActionListener(new ActionListener(){
