@@ -1,4 +1,4 @@
-package AttendanceSystemGUICode;
+package TeamProject.src.AttendanceSystemGUICode;
 
 
 public class Student  {

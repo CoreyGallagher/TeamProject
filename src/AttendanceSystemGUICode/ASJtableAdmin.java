@@ -1,4 +1,4 @@
-package AttendanceSystemGUICode;
+package TeamProject.src.AttendanceSystemGUICode;
 
 
 import javax.swing.table.DefaultTableModel;

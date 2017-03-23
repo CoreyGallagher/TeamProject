@@ -1,4 +1,4 @@
-package AttendanceSystemGUICode;
+package TeamProject.src.AttendanceSystemGUICode;
 import java.util.Scanner;
 
 public class AttendanceMenu extends AttendanceFileHandler {

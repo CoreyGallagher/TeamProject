@@ -1,4 +1,4 @@
-package AttendanceSystemGUICode;
+package TeamProject.src.AttendanceSystemGUICode;
 
 /*
 Team Project GUI
@@ -127,7 +127,7 @@ jbtDeptHead.setVerticalTextPosition(JButton.BOTTOM);
 
    picPanel = new JPanel();
    //set up college photo 
-      picButton = new JButton("LYIT", new ImageIcon("Lyit5.jpg"));
+      picButton = new JButton("LYIT", new ImageIcon("Images/Lyit5.jpg"));
       // Center the icon and text and place the text under the icon
       picButton.setHorizontalTextPosition(JButton.CENTER);
       picButton.setVerticalTextPosition(JButton.TOP);

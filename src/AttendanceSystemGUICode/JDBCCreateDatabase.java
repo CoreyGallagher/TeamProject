@@ -1,4 +1,4 @@
-package AttendanceSystemGUICode;
+package TeamProject.src.AttendanceSystemGUICode;
 //package ie.lyit.database;
 
 import java.sql.Connection;
