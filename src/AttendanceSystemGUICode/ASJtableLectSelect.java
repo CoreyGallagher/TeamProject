@@ -1,5 +1,8 @@
 package AttendanceSystemGUICode;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -70,21 +73,45 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lyitLogo.png"))); // NOI18N
 
+        //creating button 1 that will record attendance
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setMnemonic('r');
         jButton1.setText("Record Attendance");
         jButton1.setToolTipText("");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
+        
+        //add action listener to button
+        jButton1.addActionListener(
+                new ActionListener()
+                {
+                   public void actionPerformed(ActionEvent e)
+                   {
+                	   ASJtableLect RecordATD = new ASJtableLect();
+                	   RecordATD.setVisible(true);
+                	   setVisible(false);
+                	   
+                   }
+                });
+        
+        
+        //creating view attendance for lecturer
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setMnemonic('v');
         jButton2.setText("View Attendance");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        
+        //adding action listener to button
+          jButton2.addActionListener(
+                new ActionListener()
+                {
+                   public void actionPerformed(ActionEvent e)
+                   {
+                	   ASJtableView ViewATD = new ASJtableView();
+                	   ViewATD.setVisible(true);
+                	   setVisible(false);
+                	   
+                   }
+                });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

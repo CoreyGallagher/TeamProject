@@ -1,5 +1,9 @@
 package AttendanceSystemGUICode;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -62,10 +66,28 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lyitLogo.png"))); // NOI18N
         jLabel3.setText("jLabel3");
 
+        //setting the button view attendance 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setMnemonic('v');
         jButton1.setText("View Attendance");
         jButton1.setToolTipText("");
+        
+        //adding event handling to button
+        jButton1.addActionListener(
+                new ActionListener()
+                {
+                   public void actionPerformed(ActionEvent e)
+                   {
+                		   
+                	   	ASJtableView DptView = new ASJtableView();
+                	   	DptView.setVisible(true);
+                	   	setVisible(false);
+                	  
+                	}
+                   
+                   
+                });
+        
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

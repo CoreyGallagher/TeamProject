@@ -30,6 +30,7 @@ public class ASJtableView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+       
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,7 @@ public class ASJtableView extends javax.swing.JFrame {
         ));
         jTable1.setName("View Attendance"); // NOI18N
         jScrollPane1.setViewportView(jTable1);
+        jTable1.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,6 +127,7 @@ public class ASJtableView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ASJtableView().setVisible(true);
+               
             }
         });
     }

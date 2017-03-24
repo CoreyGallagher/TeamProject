@@ -1,5 +1,15 @@
 package AttendanceSystemGUICode;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+
+import javax.swing.JButton;
+import javax.swing.JToggleButton;
+
+import com.sun.glass.events.MouseEvent;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -96,13 +106,21 @@ public class ASJtableLect extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", " " }));
 
         jButton1.setText("Present");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
+        jButton1.addActionListener(
+                new ActionListener()
+                {
+                   public void actionPerformed(ActionEvent e)
+                   {
+                		   jButton1.setText("Absent");
+                    	   jButton1.setBackground(Color.red);
+                	  
+                	}
+                   
+                   
+                });
+        
         jButton3.setText("Present");
+        
 
         jButton22.setText("Present");
         jButton22.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +273,7 @@ public class ASJtableLect extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private JButton jButton1;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
