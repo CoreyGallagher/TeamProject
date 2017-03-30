@@ -51,7 +51,8 @@ public class AttendenceSystem extends javax.swing.JFrame{
 	                  {
 	                	  ASJtableAdmin Admin = new ASJtableAdmin();
 	                	  Admin.setVisible(true);
-	                	  Admin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);                
+	                	  Admin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);     
+	                	  
 	                  }
 	                  else
 	                  {
@@ -82,6 +83,9 @@ public class AttendenceSystem extends javax.swing.JFrame{
 
 	                  if(jtfPassword.equals(REQUIREDPASSWORD))
 	                  {
+	                	  ASJtableStudentView StudView = new ASJtableStudentView();
+	                	  StudView.setVisible(true);
+	                	  StudView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	                  
 	                                      }
 	                  else
