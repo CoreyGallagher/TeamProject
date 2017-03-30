@@ -108,6 +108,7 @@ public class ASJtableLect extends javax.swing.JFrame {
         jLabel1.setText("Attendance");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+       
         jComboBox1.addActionListener(
 	            new ActionListener()
 	            {
@@ -115,7 +116,7 @@ public class ASJtableLect extends javax.swing.JFrame {
 	               {
 	                  // Security password for entry to add bonus
 	            	   String value = (String) jComboBox1.getSelectedItem();
-	            	  
+	            	 
 	                   jTable2.setValueAt(value, 0, 3);
 	                   jTable2.setValueAt(value, 1, 3);
 	                   jTable2.setValueAt(value, 2, 3);
@@ -176,7 +177,7 @@ public class ASJtableLect extends javax.swing.JFrame {
         jButton4.setMnemonic('s');
         jButton4.setText("SAVE ");
         jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
+        
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -273,9 +274,9 @@ public class ASJtableLect extends javax.swing.JFrame {
        	final String DB_URL = "jdbc:mysql://attendancesystem.clql55s9fxrz.eu-west-1.rds.amazonaws.com";
        	final String USER_NAME = "cloud1";
        	final String PASSWORD = "211230mg";
-           
+        //ASJtableLectSelect   
        	java.sql.Connection conn=null;
-
+       
     	try{
     		// STEP 1 - Load the JDBC driver
     		java.lang.Class.forName(JDBC_DRIVER);
@@ -290,7 +291,7 @@ public class ASJtableLect extends javax.swing.JFrame {
     	    System.out.println("STEP 3 COMPLETE - Statement object created...");
     	    
     	    // STEP 4(a) - Execute Query
-    		    String selectQueryA="SELECT * FROM AttendanceSystem.Student WHERE Student.StudCourseCode = 'CLGTS1'";
+    		    String selectQueryA="SELECT * FROM AttendanceSystem.Student WHERE StudModCode = '"+ASJtableLectSelect.jComboBox1.getSelectedItem()+"' AND StudCourseCode = '"+ASJtableLectSelect.jComboBox2.getSelectedItem()+"'";
     		    stmt.executeUpdate("USE AttendanceSystem");
     		    ResultSet rs = stmt.executeQuery(selectQueryA);
     	        System.out.println("STEP 4(a) COMPLETE - Query executed and data selected from students...");
