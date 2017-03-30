@@ -51,7 +51,7 @@ public class AttendenceSystem extends javax.swing.JFrame{
 	                  {
 	                	  ASJtableAdmin Admin = new ASJtableAdmin();
 	                	  Admin.setVisible(true);
-	                                      
+	                	  Admin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);                
 	                  }
 	                  else
 	                  {
@@ -113,13 +113,12 @@ public class AttendenceSystem extends javax.swing.JFrame{
 	                  
 	                  if(jtfPassword.equals(REQUIREDPASSWORD))
 	                  {
-	                	  /* Create and display the form */
-		                  java.awt.EventQueue.invokeLater(new Runnable() {
-		                      public void run() {
-		                          new ASJtableLectSelect().setVisible(true);
-		                      }
-		                  });
-	                                      }
+	                	  ASJtableLectSelect Asjls = new ASJtableLectSelect();
+	                	  Asjls.setVisible(true);
+	                	  Asjls.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		              }
+		                  
+	                                      
 	                  else
 	                  {
 	                     JOptionPane.showMessageDialog(null, "Wrong Password!","Error", JOptionPane.ERROR_MESSAGE);
@@ -150,6 +149,7 @@ public class AttendenceSystem extends javax.swing.JFrame{
 	                  {
 	                	  ASJtableHDSelect DptSelect = new ASJtableHDSelect();
 	                	  DptSelect.setVisible(true);
+	                	  DptSelect.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	                  
 	                  
 	                  }
@@ -185,7 +185,7 @@ public class AttendenceSystem extends javax.swing.JFrame{
 	   frame.setTitle("Attendance System");
 	   //frame.pack();
 	   frame.setSize(800,400);
-	   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	   frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	   frame.setLocationRelativeTo(null);
 	   frame.setVisible(true);
 	   }

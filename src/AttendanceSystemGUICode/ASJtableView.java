@@ -1,5 +1,7 @@
 package AttendanceSystemGUICode;
 
+import javax.swing.JFrame;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -122,14 +124,10 @@ public class ASJtableView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ASJtableView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ASJtableView().setVisible(true);
-               
-            }
-        });
+        ASJtableView viewAtt = new ASJtableView();
+  	    viewAtt.setVisible(true);
+  	    viewAtt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

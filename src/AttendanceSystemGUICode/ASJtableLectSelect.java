@@ -71,7 +71,8 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cloud and Green", "Applied" }));
         jComboBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lyitLogo.png"))); // NOI18N
+        //jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/lyitLogo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(("img/lyitLogo.png"))); // NOI18N
 
         //creating button 1 that will record attendance
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N

@@ -2,7 +2,26 @@ package AttendanceSystemGUICode;
 
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -103,9 +122,9 @@ public class ASJtableAdmin extends javax.swing.JFrame {
         jButton1.setMnemonic('d');
         jButton1.setText("DELETE");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cloud and Green IT", "CSDF", "Applied Computing" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CLGTS1", "CSDFS1", "COMPS1" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Algorithms and Data Structures", "Database Technology", "AWS", " " }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ALGSCP701", "DATACP701", "MANGCP701"}));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -206,6 +225,42 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+   	final String DB_URL = "jdbc:mysql://attendancesystem.clql55s9fxrz.eu-west-1.rds.amazonaws.com";
+   	final String USER_NAME = "cloud1";
+   	final String PASSWORD = "211230mg";
+       
+       public void theQuery(String query){
+   		Connection con = null;
+   		Statement st = null;
+   		try{
+   			java.lang.Class.forName(JDBC_DRIVER);
+   			System.out.println("STEP 1 COMPLETE - Driver Registered...");
+   			
+   			// STEP 1 - Open a connection
+   		    con = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+   		    System.out.println("STEP 2 COMPLETE - Connection obtained...");
+   		    
+   		    // STEP 2 - Create Statement object		    
+   		 Statement stmt = con.createStatement();
+		    System.out.println("STEP 3 COMPLETE - Statement object created...");
+		    
+		    
+		    System.out.println("STEP 4(a) COMPLETE - Query executed and database found...");
+
+
+		    stmt.executeUpdate("USE AttendanceSystem");
+		   
+		  // System.out.println("STEP 4(b) COMPLETE - Query executed.");
+			con = DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
+			st = con.createStatement();
+			st.executeUpdate(query);
+			JOptionPane.showMessageDialog(null, "Query Executed");
+		}catch(Exception ex){
+			JOptionPane.showMessageDialog(null,  ex.getMessage());
+		}
+       }
 
     private void jTextFieldLNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLNActionPerformed
         // TODO add your handling code here:
@@ -214,20 +269,26 @@ public class ASJtableAdmin extends javax.swing.JFrame {
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
 
        DefaultTableModel model = (DefaultTableModel) jTable_TableAS.getModel();
+       theQuery("insert into AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, StudModCode, StudCourseCode, Password) values ('"+jTextFieldStudent.getText()+"','" +jTextFieldLN.getText()+"','" +jTextFieldFN.getText()+"','" +jComboBox2.getSelectedItem()+"','" +jComboBox1.getSelectedItem()+"','" +jTextFieldPaswd.getText()+"')");
        
        
       // model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jTextFieldCourse.getText(), jTextFieldModule.getText(), jTextFieldPaswd.getText() });
     }//GEN-LAST:event_jButtonAddActionPerformed
 
+    /*private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+
+        DefaultTableModel model = (DefaultTableModel) jTable_TableAS.getModel();
+        theQuery("delete from AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, StudModCode, StudCourseCode, Password) values ('"+jTextFieldStudent.getText()+"','" +jTextFieldLN.getText()+"','" +jTextFieldFN.getText()+"','" +jComboBox2.getSelectedItem()+"','" +jComboBox1.getSelectedItem()+"','" +jTextFieldPaswd.getText()+"')");
+        
+        
+       // model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jTextFieldCourse.getText(), jTextFieldModule.getText(), jTextFieldPaswd.getText() });
+     }//GEN-LAST:event_jButtonAddActionPerformed*/
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+       
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -246,13 +307,20 @@ public class ASJtableAdmin extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        ASJtableAdmin frame = new ASJtableAdmin();
+ 	   frame.setTitle("Administrator");
+ 	   //frame.pack();
+ 	   //frame.setSize(800,400);
+ 	   frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+ 	   frame.setLocationRelativeTo(null);
+ 	   frame.setVisible(true);
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ASJtableAdmin().setVisible(true);
+                ASJtableAdmin().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

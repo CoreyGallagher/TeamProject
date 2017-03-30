@@ -63,7 +63,8 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Security and the Cloud", "Team and Project" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lyitLogo.png"))); // NOI18N
+        //jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/lyitLogo.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(("img/lyitLogo.png"))); // NOI18N
         jLabel3.setText("jLabel3");
 
         //setting the button view attendance 
