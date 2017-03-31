@@ -107,7 +107,11 @@ public class ASJtableLect extends javax.swing.JFrame {
         }
         jLabel1.setText("Attendance");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+
+        jComboBox1.addItem("1");
+        jComboBox1.addItem("2");
+        jComboBox1.addItem("3");
        
         jComboBox1.addActionListener(
 	            new ActionListener()
@@ -115,18 +119,18 @@ public class ASJtableLect extends javax.swing.JFrame {
 	               public void actionPerformed(ActionEvent e)
 	               {
 	                  // Security password for entry to add bonus
-	            	   String value = (String) jComboBox1.getSelectedItem();
+	            	   // value = jComboBox1.getSelectedItem();
 	            	 
-	                   jTable2.setValueAt(value, 0, 3);
-	                   jTable2.setValueAt(value, 1, 3);
-	                   jTable2.setValueAt(value, 2, 3);
-	                   jTable2.setValueAt(value, 3, 3);
-	                   jTable2.setValueAt(value, 4, 3);
-	                   jTable2.setValueAt(value, 5, 3);
-	                   jTable2.setValueAt(value, 6, 3);
-	                   jTable2.setValueAt(value, 7, 3);
-	                   jTable2.setValueAt(value, 8, 3);
-	                   jTable2.setValueAt(value, 9, 3);
+	                   jTable2.setValueAt(jComboBox1.getSelectedItem(), 0, 3);
+	                   jTable2.setValueAt(jComboBox1.getSelectedItem(), 1, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 2, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 3, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 4, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 5, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 6, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 7, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 8, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 9, 3);
 	               }
 	               });
         

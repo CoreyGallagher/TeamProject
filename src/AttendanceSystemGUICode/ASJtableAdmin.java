@@ -272,7 +272,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
        theQuery("insert into AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, StudModCode, StudCourseCode, Password) values ('"+jTextFieldStudent.getText()+"','" +jTextFieldLN.getText()+"','" +jTextFieldFN.getText()+"','" +jComboBox2.getSelectedItem()+"','" +jComboBox1.getSelectedItem()+"','" +jTextFieldPaswd.getText()+"')");
        
        
-      // model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jTextFieldCourse.getText(), jTextFieldModule.getText(), jTextFieldPaswd.getText() });
+      model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jComboBox1.getSelectedItem(),  jComboBox2.getSelectedItem(), jTextFieldPaswd.getText() });
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     /*private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
@@ -281,7 +281,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
         theQuery("delete from AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, StudModCode, StudCourseCode, Password) values ('"+jTextFieldStudent.getText()+"','" +jTextFieldLN.getText()+"','" +jTextFieldFN.getText()+"','" +jComboBox2.getSelectedItem()+"','" +jComboBox1.getSelectedItem()+"','" +jTextFieldPaswd.getText()+"')");
         
         
-       // model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jTextFieldCourse.getText(), jTextFieldModule.getText(), jTextFieldPaswd.getText() });
+       model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jTextFieldCourse.getText(), jTextFieldModule.getText(), jTextFieldPaswd.getText() });
      }//GEN-LAST:event_jButtonAddActionPerformed*/
 
     /**
