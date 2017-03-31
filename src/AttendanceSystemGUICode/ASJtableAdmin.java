@@ -257,6 +257,9 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 			st = con.createStatement();
 			st.executeUpdate(query);
 			JOptionPane.showMessageDialog(null, "Query Executed");
+			 DefaultTableModel model = (DefaultTableModel) jTable_TableAS.getModel();
+			 model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jComboBox1.getSelectedItem(),  jComboBox2.getSelectedItem(), jTextFieldPaswd.getText() });
+			 
 		}catch(Exception ex){
 			JOptionPane.showMessageDialog(null,  ex.getMessage());
 		}
@@ -268,11 +271,8 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
 
-       DefaultTableModel model = (DefaultTableModel) jTable_TableAS.getModel();
        theQuery("insert into AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, StudModCode, StudCourseCode, Password) values ('"+jTextFieldStudent.getText()+"','" +jTextFieldLN.getText()+"','" +jTextFieldFN.getText()+"','" +jComboBox2.getSelectedItem()+"','" +jComboBox1.getSelectedItem()+"','" +jTextFieldPaswd.getText()+"')");
        
-       
-      model.addRow(new Object[]{ jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(), jComboBox1.getSelectedItem(),  jComboBox2.getSelectedItem(), jTextFieldPaswd.getText() });
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     /*private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed

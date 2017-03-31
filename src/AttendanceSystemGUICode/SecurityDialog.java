@@ -3,8 +3,6 @@ package AttendanceSystemGUICode;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
 
 public class SecurityDialog extends JDialog {
 	// Declare Components of our JDialog...
@@ -17,7 +15,6 @@ public class SecurityDialog extends JDialog {
 	public JPanel jpTextFields;
 	public JTextField jtfUsername;
 	public JPasswordField jtfPassword;
-	
 
 	// ...and a JPanel with two JButtons
 	public JPanel jpButtons;
@@ -30,10 +27,10 @@ public class SecurityDialog extends JDialog {
 		// Constructor - SetLayout & Add Components here...
 		// Panel 1 - Two JLabels
 		jpLabels = new JPanel(new GridLayout(2, 1));
-		jlblImage=new JLabel(new javax.swing.ImageIcon(("img/lock.png")));
+		jlblImage = new JLabel(new javax.swing.ImageIcon(("img/lock.png")));
 		jpLabels.add(jlblUserName = new JLabel("Username"));
 		jpLabels.add(jlblPassword = new JLabel("Password"));
-		
+
 		// Panel 2 - A JTextField and a JPasswordField
 		jpTextFields = new JPanel(new GridLayout(2, 1));
 		jpTextFields.add(jtfUsername = new JTextField(15));
@@ -44,6 +41,12 @@ public class SecurityDialog extends JDialog {
 		jpButtons = new JPanel();
 		jpButtons.add(jbtOK = new JButton("OK"));
 		jpButtons.add(jbtCancel = new JButton("Cancel"));
+		
+		//jpLabels.setBackground(Color.GREEN);
+		//jpTextFields.setBackground(Color.GREEN);
+		//jpButtons.setBackground(Color.GREEN);
+		//jtfUsername.setBackground(Color.GREEN);
+		//jtfPassword.setBackground(Color.GREEN);
 
 		// Set up the JFrame
 		add(jlblImage, BorderLayout.NORTH);

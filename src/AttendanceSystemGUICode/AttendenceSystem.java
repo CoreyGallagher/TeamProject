@@ -22,7 +22,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 	private JButton jbtAdmin, jbtStudent, jbtLecturer, jbtDeptHead, picButton;
 	private JPanel buttonPanel, picPanel;
 	// private JLabel jlblOne;
-	//private String jtfPassword;
+	// private String jtfPassword;
 	public JPasswordField jfPassword;
 	public String userNameEntered, passwordEntered;
 	private final String REQUIREDPASSWORD = "password";
@@ -34,6 +34,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		buttonPanel.setLayout(new GridLayout(0, 4));
 		// buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		buttonPanel.add(jbtAdmin = new JButton("Administrator"));
+		jbtAdmin.setFont(new java.awt.Font("Impact", Font.BOLD, 20));
 		jbtAdmin.setMnemonic('A');
 		jbtAdmin.setHorizontalTextPosition(JButton.CENTER);
 		jbtAdmin.setVerticalTextPosition(JButton.BOTTOM);
@@ -57,13 +58,20 @@ public class AttendenceSystem extends javax.swing.JFrame {
 						passwordEntered = new String(s1.jtfPassword.getPassword());
 
 						if (passwordEntered.equals(REQUIREDPASSWORD)) {
+							
 							ASJtableAdmin Admin = new ASJtableAdmin();
 							Admin.setVisible(true);
 							Admin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 							s1.dispose();
 						} else {
+							//s1.jpLabels.setBackground(Color.RED);
+							//s1.jpTextFields.setBackground(Color.RED);
+							//s1.jpButtons.setBackground(Color.RED);
+							//s1.jtfUsername.setBackground(Color.RED);
+							//s1.jtfPassword.setBackground(Color.RED);
 							JOptionPane.showMessageDialog(null, "INCORRECT PASSWORD ENTERED", "PASSWORD ERROR",
 									JOptionPane.ERROR_MESSAGE);
+							
 						}
 					}
 
@@ -73,6 +81,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 
 		// adding jbtStudent to the buttonPanel
 		buttonPanel.add(jbtStudent = new JButton("Student"));
+		jbtStudent.setFont(new java.awt.Font("Tahoma", 1, 20));
 		jbtStudent.setMnemonic('s');
 		jbtStudent.setHorizontalTextPosition(JButton.CENTER);
 		jbtStudent.setVerticalTextPosition(JButton.BOTTOM);
@@ -110,6 +119,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		});
 		// buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		buttonPanel.add(jbtLecturer = new JButton("Lecturer"));
+		jbtLecturer.setFont(new java.awt.Font("Tahoma", 1, 20));
 		jbtLecturer.setMnemonic('l');
 		jbtLecturer.setHorizontalTextPosition(JButton.CENTER);
 		jbtLecturer.setVerticalTextPosition(JButton.BOTTOM);
@@ -146,7 +156,8 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		});
 
 		// buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		buttonPanel.add(jbtDeptHead = new JButton("Department Head"));
+		buttonPanel.add(jbtDeptHead = new JButton("Dept Head"));
+		jbtDeptHead.setFont(new java.awt.Font("Tahoma", 1, 20));
 		jbtDeptHead.setMnemonic('d');
 		jbtDeptHead.setHorizontalTextPosition(JButton.CENTER);
 		jbtDeptHead.setVerticalTextPosition(JButton.BOTTOM);
@@ -189,7 +200,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		// Center the icon and text and place the text under the icon
 		picButton.setHorizontalTextPosition(JButton.CENTER);
 		picButton.setVerticalTextPosition(JButton.TOP);
-		picButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+		picButton.setFont(new Font("Impact", Font.BOLD, 20));
 		picButton.setBackground(Color.LIGHT_GRAY);
 		picButton.setMnemonic('L');
 		picPanel.add(picButton, BorderLayout.NORTH);
@@ -201,7 +212,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		AttendenceSystem frame = new AttendenceSystem();
 		frame.setTitle("Attendance System");
 		// frame.pack();
-		frame.setSize(800, 400);
+		frame.setSize(800, 390);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);

@@ -120,9 +120,9 @@ public class ASJtableLect extends javax.swing.JFrame {
 	               {
 	                  // Security password for entry to add bonus
 	            	   // value = jComboBox1.getSelectedItem();
-	            	 
+	            	// for (int i; i < jTable2.getRowCount().length(); i++)
 	                   jTable2.setValueAt(jComboBox1.getSelectedItem(), 0, 3);
-	                   jTable2.setValueAt(jComboBox1.getSelectedItem(), 1, 3);
+	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 1, 3);
 	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 2, 3);
 	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 3, 3);
 	                   //jTable2.setValueAt(jComboBox1.getSelectedItem(), 4, 3);
