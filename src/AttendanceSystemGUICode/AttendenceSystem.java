@@ -34,7 +34,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		buttonPanel.setLayout(new GridLayout(0, 4));
 		// buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		buttonPanel.add(jbtAdmin = new JButton("Administrator"));
-		jbtAdmin.setFont(new java.awt.Font("Impact", Font.BOLD, 20));
+		jbtAdmin.setFont(new java.awt.Font("Tahoma",1, 20));
 		jbtAdmin.setMnemonic('A');
 		jbtAdmin.setHorizontalTextPosition(JButton.CENTER);
 		jbtAdmin.setVerticalTextPosition(JButton.BOTTOM);

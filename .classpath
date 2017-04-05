@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/RDS MySQL Driver"/>
-	<classpathentry kind="lib" path="/home/mark/myGitRepo/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry kind="lib" path="E:/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
