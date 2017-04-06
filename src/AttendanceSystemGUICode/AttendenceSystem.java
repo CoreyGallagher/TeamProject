@@ -34,7 +34,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		buttonPanel.setLayout(new GridLayout(0, 4));
 		// buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		buttonPanel.add(jbtAdmin = new JButton("Administrator"));
-		jbtAdmin.setFont(new java.awt.Font("Tahoma",1, 20));
+		jbtAdmin.setFont(new java.awt.Font("tahoma", 1, 20));
 		jbtAdmin.setMnemonic('A');
 		jbtAdmin.setHorizontalTextPosition(JButton.CENTER);
 		jbtAdmin.setVerticalTextPosition(JButton.BOTTOM);
@@ -59,7 +59,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 
 						if (passwordEntered.equals(REQUIREDPASSWORD)) {
 							
-							ASJtableAdmin Admin = new ASJtableAdmin();
+							AdminView Admin = new AdminView();
 							Admin.setVisible(true);
 							Admin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 							s1.dispose();
@@ -217,4 +217,4 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
-}
+}  

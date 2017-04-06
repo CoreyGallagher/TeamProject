@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JToggleButton;
 import javax.swing.table.DefaultTableModel;
@@ -52,15 +53,15 @@ public class ASJtableLect extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JToggleButton();
-        jButton3 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton38 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JToggleButton();
+        jButton22 = new javax.swing.JToggleButton();
+        jButton23 = new javax.swing.JToggleButton();
+        jButton26 = new javax.swing.JToggleButton();
+        jButton27 = new javax.swing.JToggleButton();
+        jButton28 = new javax.swing.JToggleButton();
+        jButton25 = new javax.swing.JToggleButton();
+        jButton24 = new javax.swing.JToggleButton();
+        jButton38 = new javax.swing.JToggleButton();
         jButton4 = new javax.swing.JButton();
 
         //jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -155,27 +156,175 @@ public class ASJtableLect extends javax.swing.JFrame {
         });
        
         jButton3.setText("Present");
+        jButton3.setBackground(Color.GREEN);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
+            	
+            	if(jButton3.isSelected()){
+            	jButton3.setText("Absent");
+            	jButton3.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton3.setText("Present");
+            		jButton3.setBackground(Color.GREEN);
+            	}
+                
+            }
+        });
 
         jButton22.setText("Present");
+        jButton22.setBackground(Color.GREEN);
         jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
+            	
+            	
+            	if(jButton22.isSelected()){
+            	jButton22.setText("Absent");
+            	jButton22.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton22.setText("Present");
+            		jButton22.setBackground(Color.GREEN);
+            	}
+                
             }
         });
 
         jButton23.setText("Present");
+        jButton23.setBackground(Color.GREEN);
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
+            	
+            	if(jButton23.isSelected()){
+            	jButton23.setText("Absent");
+            	jButton23.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton23.setText("Present");
+            		jButton23.setBackground(Color.GREEN);
+            	}
+                
+            }
+        });
 
         jButton26.setText("Present");
+        jButton26.setBackground(Color.GREEN);
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
+            	
+            	if(jButton26.isSelected()){
+            	jButton26.setText("Absent");
+            	jButton26.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton26.setText("Present");
+            		jButton26.setBackground(Color.GREEN);
+            	}
+                
+            }
+        });
 
         jButton27.setText("Present");
+        jButton27.setBackground(Color.GREEN);
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
+            	
+            	if(jButton27.isSelected()){
+            	jButton27.setText("Absent");
+            	jButton27.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton27.setText("Present");
+            		jButton27.setBackground(Color.GREEN);
+            	}
+                
+            }
+        });
 
         jButton28.setText("Present");
+        jButton28.setBackground(Color.GREEN);
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
+            	
+            	if(jButton28.isSelected()){
+            	jButton28.setText("Absent");
+            	jButton28.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton28.setText("Present");
+            		jButton28.setBackground(Color.GREEN);
+            	}
+                
+            }
+        });
 
         jButton25.setText("Present");
+        jButton25.setBackground(Color.GREEN);
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
+            	
+            	if(jButton25.isSelected()){
+            	jButton25.setText("Absent");
+            	jButton25.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton25.setText("Present");
+            		jButton25.setBackground(Color.GREEN);
+            	}
+                
+            }
+        });
 
         jButton24.setText("Present");
+        jButton24.setBackground(Color.GREEN);
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
+            	
+            	if(jButton24.isSelected()){
+            	jButton24.setText("Absent");
+            	jButton24.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton24.setText("Present");
+            		jButton24.setBackground(Color.GREEN);
+            	}
+                
+            }
+        });
 
         jButton38.setText("Present");
+        jButton38.setBackground(Color.GREEN);
+        jButton38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
+            	
+            	if(jButton38.isSelected()){
+            	jButton38.setText("Absent");
+            	jButton38.setBackground(Color.RED);
+                jButton1ActionPerformed(evt);
+            	}
+            	else{
+            		jButton38.setText("Present");
+            		jButton38.setBackground(Color.GREEN);
+            	}
+                
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setMnemonic('s');
@@ -370,16 +519,16 @@ public class ASJtableLect extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JToggleButton jButton1;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton38;
-    private javax.swing.JButton jButton4;
+    private JToggleButton jButton22;
+    private JToggleButton jButton23;
+    private JToggleButton jButton24;
+    private JToggleButton jButton25;
+    private JToggleButton jButton26;
+    private JToggleButton jButton27;
+    private JToggleButton jButton28;
+    private JToggleButton jButton3;
+    private JToggleButton jButton38;
+    private JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
