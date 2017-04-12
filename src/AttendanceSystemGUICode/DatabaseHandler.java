@@ -28,6 +28,7 @@ public class DatabaseHandler extends javax.swing.JFrame{
    	final String DB_URL = "jdbc:mysql://attendancesystem.clql55s9fxrz.eu-west-1.rds.amazonaws.com";
    	final String USER_NAME = "cloud1";
    	final String PASSWORD = "211230mg";
+
        
    	Connection conn=null;
    	Statement stmt = null;
@@ -51,7 +52,19 @@ public class DatabaseHandler extends javax.swing.JFrame{
    		}
    		catch (SQLException e) {
    			System.out.println("Problem with SQL.\n" + e.getMessage());
-   		}		
+   		}	
+   		/*finally{
+ 		   try {
+ 		       rs.close();
+ 		       //p.close();
+ 		       conn.close();
+ 		   } catch (SQLException e) {
+ 		        // TODO Auto-generated catch block
+ 		       e.printStackTrace();
+ 		    }
+ 		
+        }*/
+   		
    	}
    	
    	public void doQuery(String query){
@@ -86,7 +99,12 @@ public class DatabaseHandler extends javax.swing.JFrame{
 		}catch(Exception ex){
 			JOptionPane.showMessageDialog(null,  ex.getMessage());
 		}
-       }
+		
+   		
+   		
+   	}
+}
+   	
    
 
- }
+ 

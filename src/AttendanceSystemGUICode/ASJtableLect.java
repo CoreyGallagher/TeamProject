@@ -47,6 +47,8 @@ public class ASJtableLect extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
+	    
+
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,11 +88,15 @@ public class ASJtableLect extends javax.swing.JFrame {
                            return Integer.class;
                        case 3:
                            return Integer.class;
-                       default:
+                       case 4:
                            return Boolean.class;
                    }
+				return null;
+                   
                }
            });
+        
+        
         jTable2.setGridColor(new java.awt.Color(0, 0, 0));
         jTable2.setInheritsPopupMenu(true);
         jTable2.setRowHeight(21);
@@ -99,6 +105,24 @@ public class ASJtableLect extends javax.swing.JFrame {
         jLabel1.setText("Class Hours");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        jComboBox1.addActionListener(
+	            new ActionListener()
+	            {
+	               public void actionPerformed(ActionEvent e)
+	               {
+	                  // Security password for entry to add bonus
+	            	   String value = (String) jComboBox1.getSelectedItem();
+	            	   
+	            	   int rowCount;
+	            	   rowCount = jTable2.getRowCount();
+	            	  
+	            	   for(int i = 0; i < rowCount; i++)
+	            	   {
+	            		   jTable2.setValueAt(value, i, 3);
+	            	   }
+	                  
+	               }
+	            });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setMnemonic('s');
@@ -183,7 +207,9 @@ public class ASJtableLect extends javax.swing.JFrame {
 				String first = rs.getString("StudentFirstName");
 				// String course = rs.getString("StudCourseCode");
 				System.out.println(StudentNo + " " + last + " " + first + " ");
-				boolean present = true;
+			    boolean present = true;
+			    
+			    
 				Object[] content = { StudentNo, last, first, null, present };
 
 				DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
@@ -196,10 +222,14 @@ public class ASJtableLect extends javax.swing.JFrame {
 		} catch (SQLException e) {
 			System.out.println("Problem with SQL.\n" + e.getMessage());
 		}
-
+		finally{
+			
+		}
+			
 	}
+	
    
-
+	
 
     /**
      * @param args the command line arguments
