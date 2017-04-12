@@ -27,6 +27,7 @@ public class ASJtableLect extends javax.swing.JFrame {
      */
     public ASJtableLect() {
         initComponents();
+        showTable();
     }
 
     /**

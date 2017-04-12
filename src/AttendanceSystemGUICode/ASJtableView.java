@@ -42,16 +42,6 @@ public class ASJtableView extends javax.swing.JFrame {
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"L00119988", "Again", "Try", "20", "20", "100"},
-                {"L00112233", "Dowling", "Thomas", "16", "20", "80"},
-                {"L00112434", "Kachidza", "Brenda", "14", "20", "70"},
-                {"L00113344", "Borthwick", "Lindsay", "18", "20", "90"},
-                {"L00114455", "Glenn", "Mark", "16", "20", "80"},
-                {"L00116677", "Gallagher", "Corey", "12", "20", "60"},
-                {"L00117788", "Jerry", "Tom", "14", "20", "70"},
-                {"L00114554", "Dick", "Harry", "18", "20", "90"},
-                {"L00116787", "Toman", "Marinus", "14", "20", "70"},
-                {"L00112345", "Cole", "Andrea", "16", "20", "80"}
             },
             new String [] {
                 "StudentID", "Last Name", "First Name", "Hours Attended", "Module Hours", "Attendance %"
