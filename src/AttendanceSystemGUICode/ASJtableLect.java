@@ -27,6 +27,7 @@ public class ASJtableLect extends javax.swing.JFrame {
      */
     public ASJtableLect() {
         initComponents();
+        showTable();
     }
 
     /**
@@ -69,16 +70,7 @@ public class ASJtableLect extends javax.swing.JFrame {
         jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"L0011223344", "Dick", "Harry", null,  new Boolean(true)},
-                {"L0022334455", "Kayz", "Brenda", null,  new Boolean(true)},
-                {"L0033445566", "Borthwick", "Lindsay", null,  new Boolean(true)},
-                {"L0055667788", "Glen", "Mark", null,  new Boolean(true)},
-                {"L0044556677", "Gallagher", "Corey", null,  new Boolean(true)},
-                {"L0066778899", "Mcgee", "Dermot", null,  new Boolean(true)},
-                {"L0012324561", "McCann", "Eimear", null,  new Boolean(true)},
-                {"L00245689", "Cole", "Andrea", null,  new Boolean(true)},
-                {"L00117789", "Toman", "Marinus", null,  new Boolean(true)},
-                {"L0099887766", "Munoz", "Diana", null,  new Boolean(true)}
+         
             },
             new String [] {
                 "StudentID", "LastName", "FirstName", "Hours", "Present"
