@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -421,59 +422,47 @@ public class ASJtableLect extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-    public void showTable(){
-    	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-       	final String DB_URL = "jdbc:mysql://attendancesystem.clql55s9fxrz.eu-west-1.rds.amazonaws.com";
-       	final String USER_NAME = "cloud1";
-       	final String PASSWORD = "211230mg";
-        //ASJtableLectSelect   
-       	java.sql.Connection conn=null;
-       
-    	try{
-    		// STEP 1 - Load the JDBC driver
-    		java.lang.Class.forName(JDBC_DRIVER);
-    		System.out.println("STEP 1 COMPLETE - Driver Registered...");
-    		
-    		// STEP 2 - Open a connection
-    	    conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
-    	    System.out.println("STEP 2 COMPLETE - Connection obtained...");
-    	    
-    	    // STEP 3 - Create Statement object		    
-    	    java.sql.Statement stmt = conn.createStatement();
-    	    System.out.println("STEP 3 COMPLETE - Statement object created...");
-    	    
-    	    // STEP 4(a) - Execute Query
-    		    String selectQueryA="SELECT * FROM AttendanceSystem.Student WHERE StudModCode = '"+ASJtableLectSelect.jComboBox1.getSelectedItem()+"' AND StudCourseCode = '"+ASJtableLectSelect.jComboBox2.getSelectedItem()+"'";
-    		    stmt.executeUpdate("USE AttendanceSystem");
-    		    ResultSet rs = stmt.executeQuery(selectQueryA);
-    	        System.out.println("STEP 4(a) COMPLETE - Query executed and data selected from students...");
-    	        
-    		    // STEP 5(a) - Process results of the Query
-    		    while(rs.next() != false){
-    		       // Can get columns by name, or number which starts at 1
-    		       String StudentNo = rs.getString("StudentNumber");
-    		       String last = rs.getString("StudentLastName");
-    		       String first = rs.getString("StudentFirstName");
-    		       //String course = rs.getString("StudCourseCode");
-    		       System.out.println(StudentNo + " " + last + " " + first + " ");
-    		       
-    		       Object[] content = {StudentNo, last, first};
-    		       
-    		       DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-    		       
-    		       model.addRow(content);
-        		    
-    	        System.out.println("STEP 5(a) COMPLETE - Results of Query processed...");
-    		
- 		      
-    		    }
-    	       
-    	}
-    	catch(Exception e){
-    		
-    	}
-    }
+	public void showTable() {
+
+		try {
+			//ASJtableLect asj = new ASJtableLect();
+			DatabaseHandler db = new DatabaseHandler();
+			// connect to database
+			db.connectToDatabase();
+
+			// create query and pass into doQuery method
+			String selectQuery = "SELECT * FROM AttendanceSystem.Student WHERE StudModCode = '"
+					+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "' AND StudCourseCode = '"
+					+ ASJtableLectSelect.jComboBox2.getSelectedItem() + "'";
+			db.doQuery(selectQuery);
+
+			db.stmt.executeUpdate("USE AttendanceSystem");
+			ResultSet rs = db.stmt.executeQuery(selectQuery);
+			// STEP 5(a) - Process results of the Query
+			while (rs.next() != false) {
+
+				// Can get columns by name, or number which starts at 1
+				String StudentNo = rs.getString("StudentNumber");
+				String last = rs.getString("StudentLastName");
+				String first = rs.getString("StudentFirstName");
+				// String course = rs.getString("StudCourseCode");
+				System.out.println(StudentNo + " " + last + " " + first + " ");
+				boolean present = true;
+				Object[] content = { StudentNo, last, first, null, present };
+
+				DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+
+				model.addRow(content);
+
+				System.out.println("STEP 5(a) COMPLETE - Results of Query processed...");
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Problem with SQL.\n" + e.getMessage());
+		}
+
+	}
+   
 
     /**
      * @param args the command line arguments
