@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JToggleButton;
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 //import com.sun.glass.events.MouseEvent;
 
 
@@ -99,6 +101,31 @@ public class ASJtableLect extends javax.swing.JFrame {
         jLabel1.setText("Class Hours");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        jComboBox1.addActionListener(
+	            new ActionListener()
+	            {
+	               public void actionPerformed(ActionEvent e)
+	               {
+	                  // Security password for entry to add bonus
+	            	   String value = (String) jComboBox1.getSelectedItem();
+	            	   int rowCount;
+	            	   rowCount = jTable2.getRowCount();
+	            	  
+	            	   for(int i = 0; i < rowCount; i++)
+	            	   {
+	                   jTable2.setValueAt(value, i, 3);
+	                   //jTable2.setValueAt(value, 1, 3);
+	                   //jTable2.setValueAt(value, 2, 3);
+	            	   }
+	                   //jTable2.setValueAt(value, 3, 3);
+	                   //jTable2.setValueAt(value, 4, 3);
+	                   //jTable2.setValueAt(value, 5, 3);
+	                   //jTable2.setValueAt(value, 6, 3);
+	                  // jTable2.setValueAt(value, 7, 3);
+	                   //jTable2.setValueAt(value, 8, 3);
+	                   //jTable2.setValueAt(value, 9, 3);
+	               }
+});
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setMnemonic('s');
