@@ -86,7 +86,15 @@ public class DatabaseHandler extends javax.swing.JFrame{
 		}catch(Exception ex){
 			JOptionPane.showMessageDialog(null,  ex.getMessage());
 		}
-       }
-   
+   		/*finally{
+   			try{
+   				rs.close();
+   				conn.close();
+   				
+   			}catch(SQLException e){
+   				e.printStackTrace();
+   		}
+       }*/
+   	}
 
  }
