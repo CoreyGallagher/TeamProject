@@ -64,11 +64,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 							Admin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 							s1.dispose();
 						} else {
-							//s1.jpLabels.setBackground(Color.RED);
-							//s1.jpTextFields.setBackground(Color.RED);
-							//s1.jpButtons.setBackground(Color.RED);
-							//s1.jtfUsername.setBackground(Color.RED);
-							//s1.jtfPassword.setBackground(Color.RED);
+						
 							JOptionPane.showMessageDialog(null, "INCORRECT PASSWORD ENTERED", "PASSWORD ERROR",
 									JOptionPane.ERROR_MESSAGE);
 							
