@@ -1,5 +1,7 @@
 package AttendanceSystemGUICode;
 
+import javax.swing.JOptionPane;
+
 public class CreateClass extends javax.swing.JFrame {
 
     /**
@@ -43,9 +45,9 @@ public class CreateClass extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Module Code");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -124,9 +126,27 @@ public class CreateClass extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    	try {
+			DatabaseHandler dbh1 = new DatabaseHandler();
+			dbh1.connectToDatabase();
+			String insertQuery = ("insert into AttendanceSystem.Course(CourseCode, CourseName, ModuleCode) values ('"
+					+ jTextField2.getText() + "','"
+					+ jTextField3.getText() + "','" +jTextField1.getText()+ "')");
+			dbh1.doQuery(insertQuery);
+
+			// dbh.conn =
+			// DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
+			dbh1.stmt = dbh1.conn.createStatement();
+			dbh1.stmt.executeUpdate(insertQuery);
+			JOptionPane.showMessageDialog(null, "Query Executed");
+			
+
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
+    }
+    
 
     /**
      * @param args the command line arguments
