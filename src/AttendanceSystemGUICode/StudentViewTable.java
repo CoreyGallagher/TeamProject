@@ -128,10 +128,11 @@ public class StudentViewTable extends javax.swing.JFrame {
 				System.out.println("STEP 5(a) COMPLETE - Results of Query processed...");
 
 			}
-
+			db.conn.close();
 		} catch (SQLException e) {
 			System.out.println("Problem with SQL.\n" + e.getMessage());
 		}
+		
 
 	}
     public static void main(String args[]) {
