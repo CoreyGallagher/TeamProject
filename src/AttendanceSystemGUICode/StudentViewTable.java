@@ -28,6 +28,7 @@ public class StudentViewTable extends javax.swing.JFrame {
      */
     public StudentViewTable() {
         initComponents();
+        showTable();
     }
 
     /**
@@ -94,15 +95,14 @@ public class StudentViewTable extends javax.swing.JFrame {
     public void showTable() {
 
 		try {
-			// ASJtableLect asj = new ASJtableLect();
+			//ASJtableLect asj = new ASJtableLect();
 			DatabaseHandler db = new DatabaseHandler();
 			// connect to database
 			db.connectToDatabase();
 
 			// create query and pass into doQuery method
-			String selectQuery = "SELECT Student.StudentNumber, Student.StudentLastName, Student.StudentFirstname, StudentModules.Module FROM Student JOIN StudentModules ON Student.StudentNumber=StudentModules.StudentIdentity WHERE Student.StudCourseCode ='"
-					+ ASJtableLectSelect.jComboBox2.getSelectedItem() + "' AND StudentModules.Module = '"
-					+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'";
+			String selectQuery = "SELECT AttendanceRecords.Date, AttendanceRecords.ModuleCde, AttendanceRecords.HoursAttended FROM AttendanceRecords WHERE AttendanceRecords.ModuleCde ='"
+					+ ASJtableStudentView.jComboBox1.getSelectedItem() + "'";
 
 			db.doQuery(selectQuery);
 
@@ -112,13 +112,13 @@ public class StudentViewTable extends javax.swing.JFrame {
 			while (rs.next() != false) {
 
 				// Can get columns by name, or number which starts at 1
-				String StudentNo = rs.getString("StudentNumber");
-				String last = rs.getString("StudentLastName");
-				String first = rs.getString("StudentFirstName");
+				String Date = rs.getString("Date");
+				String ModuleCode = rs.getString("ModuleCde");
+				String Hours = rs.getString("HoursAttended");
 				// String course = rs.getString("StudCourseCode");
-				System.out.println(StudentNo + " " + last + " " + first + " ");
-				boolean present = true;
-				Object[] content = { StudentNo, last, first, null, present };
+				System.out.println(Date + " " + ModuleCode + " " + Hours + " ");
+				//boolean present = true;
+				Object[] content = { Date, ModuleCode, Hours, null };
 
 				DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
 
