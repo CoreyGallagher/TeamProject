@@ -218,7 +218,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		try {
 			DatabaseHandler dbh = new DatabaseHandler();
 			dbh.connectToDatabase();
-			String insertQuery = ("insert into AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, StudCourseCode, Password) values ('"
+			String insertQuery = ("insert into AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, Password, StudCourseCode) values ('"
 					+ jTextFieldStudent.getText() + "','" + jTextFieldLN.getText() + "','" + jTextFieldFN.getText() + "','" + jTextFieldPaswd.getText() + "','"
 					+ jComboBox1.getSelectedItem() + "')");
 			dbh.doQuery(insertQuery);
