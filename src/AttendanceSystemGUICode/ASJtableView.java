@@ -51,6 +51,7 @@ public class ASJtableView extends javax.swing.JFrame {
 		jScrollPane1.setViewportView(jTable1);
 		jTable1.setEnabled(false);
 
+
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,6 +66,19 @@ public class ASJtableView extends javax.swing.JFrame {
 						.createSequentialGroup().addContainerGap().addComponent(jScrollPane1,
 								javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(15, Short.MAX_VALUE)));
+
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jTable1.setModel(new DefaultTableModel(
+        	new Object[][] {
+        	},
+        	new String[] {
+        		"StudentID", "Last Name", "First Name", "Hours Attended", "Module Hours", "Attendance %"
+        	}
+        ));
+        jTable1.setName("View Attendance"); // NOI18N
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.setEnabled(false);
+
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -92,9 +106,9 @@ public class ASJtableView extends javax.swing.JFrame {
 			db.connectToDatabase();
 
 			// create query and pass into doQuery method
-			String selectQuery = "SELECT AttendanceRecords.Date, AttendanceRecords.ModuleCde, AttendanceRecords.CourseCde, AttendanceRecords.Hours, Student.StudentLastName, Student.StudentFirstname FROM AttendanceRecords JOIN Student ON AttendanceRecords.StudentNo=Student.StudentNumber WHERE Student.StudCourseCode ='"
+			String selectQuery = "SELECT AttendanceRecords.Date, AttendanceRecords.ModuleCde, AttendanceRecords.CourseCde, AttendanceRecords.HoursAttended, AttendanceRecords.ModuleHours, Student.StudentLastName, Student.StudentFirstname FROM AttendanceRecords JOIN Student ON AttendanceRecords.StudentNo=Student.StudentNumber WHERE Student.StudCourseCode ='"
 					+ ASJtableLectSelect.jComboBox2.getSelectedItem() + "' AND AttendanceRecords.ModuleCde = '"
-					+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'";
+					+ ASJtableLectSelect.jComboBox1.getSelectedItem() +  "'";
 			db.doQuery(selectQuery);
 
 			db.stmt.executeUpdate("USE AttendanceSystem");
@@ -104,13 +118,13 @@ public class ASJtableView extends javax.swing.JFrame {
 
 				// Can get columns by name, or number which starts at 1
 				String Date = rs.getString("Date");
-				String ModuleCode = rs.getString("ModuleCde");
-				String Hours = rs.getString("Hours");
+				String ModHours = rs.getString("ModuleHours");
+				String HoursAtt = rs.getString("HoursAttended");
 				String fName = rs.getString("StudentFirstName");
 				String lName = rs.getString("StudentLastName");
-				System.out.println(Date + " " + ModuleCode + " " + Hours + " ");
+				//System.out.println(Date + " " + ModuleCode + " " + Hours + " ");
 				// boolean present = true;
-				Object[] content = { Date, lName, fName, ModuleCode, Hours, null };
+				Object[] content = { Date, lName, fName, HoursAtt, ModHours, null };
 
 				DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
