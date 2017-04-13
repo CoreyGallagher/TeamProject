@@ -60,7 +60,7 @@ public class ASJtableStudentView extends javax.swing.JFrame {
         
         //Setting the characteristics of the Combo Box
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Team Project", "Algorithms" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ALGSCP701", "MANGCP701", "DATACP701" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         jLabel2.setDisplayedMnemonic('m');

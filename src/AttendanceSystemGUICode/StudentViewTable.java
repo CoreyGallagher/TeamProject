@@ -1,5 +1,10 @@
 package AttendanceSystemGUICode;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -45,16 +50,7 @@ public class StudentViewTable extends javax.swing.JFrame {
         jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "12", "20", null},
-                {"2", "14", "20", null},
-                {"3", "16", "20", null},
-                {"4", "20", "20", null},
-                {"5", "0", "20", null},
-                {"6", "14", "20", null},
-                {"7", "12", "20", null},
-                {"8", "15", "20", null},
-                {"9", "14", "20", null},
-                {"10", "16", "20", null}
+                
             },
             new String [] {
                 "Week", "Hours Attended", "Module Hours", "Attendance %"
@@ -92,9 +88,49 @@ public class StudentViewTable extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    public void showTable() {
+
+		try {
+			// ASJtableLect asj = new ASJtableLect();
+			DatabaseHandler db = new DatabaseHandler();
+			// connect to database
+			db.connectToDatabase();
+
+			// create query and pass into doQuery method
+			String selectQuery = "SELECT Student.StudentNumber, Student.StudentLastName, Student.StudentFirstname, StudentModules.Module FROM Student JOIN StudentModules ON Student.StudentNumber=StudentModules.StudentIdentity WHERE Student.StudCourseCode ='"
+					+ ASJtableLectSelect.jComboBox2.getSelectedItem() + "' AND StudentModules.Module = '"
+					+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'";
+
+			db.doQuery(selectQuery);
+
+			db.stmt.executeUpdate("USE AttendanceSystem");
+			ResultSet rs = db.stmt.executeQuery(selectQuery);
+			// STEP 5(a) - Process results of the Query
+			while (rs.next() != false) {
+
+				// Can get columns by name, or number which starts at 1
+				String StudentNo = rs.getString("StudentNumber");
+				String last = rs.getString("StudentLastName");
+				String first = rs.getString("StudentFirstName");
+				// String course = rs.getString("StudCourseCode");
+				System.out.println(StudentNo + " " + last + " " + first + " ");
+				boolean present = true;
+				Object[] content = { StudentNo, last, first, null, present };
+
+				DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+
+				model.addRow(content);
+				// model.addTableModelListener(jTable2);
+
+				System.out.println("STEP 5(a) COMPLETE - Results of Query processed...");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Problem with SQL.\n" + e.getMessage());
+		}
+
+	}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

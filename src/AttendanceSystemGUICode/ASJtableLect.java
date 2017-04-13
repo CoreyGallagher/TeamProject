@@ -122,8 +122,7 @@ public class ASJtableLect extends javax.swing.JFrame {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
 					java.util.Date date = new java.util.Date();
-					java.text.SimpleDateFormat sdf = 
-							new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					String currentTime = sdf.format(date);
 					DatabaseHandler dbh = new DatabaseHandler();
 					dbh.connectToDatabase();
@@ -133,20 +132,19 @@ public class ASJtableLect extends javax.swing.JFrame {
 						String studNo = jTable2.getValueAt(i, 0).toString();
 						String hours = jTable2.getValueAt(i, 3).toString();
 						int number = i;
-						String insertQuery = ("INSERT INTO AttendanceSystem.AttendanceRecords(Date, StudentNo, ModuleCde, CourseCde, Hours) VALUES('"+currentTime +"','"+ studNo + "','"
-								+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "','"
-								+ ASJtableLectSelect.jComboBox2.getSelectedItem() +"','"+ hours + "')");
+						String insertQuery = ("INSERT INTO AttendanceSystem.AttendanceRecords(Date, StudentNo, ModuleCde, CourseCde, Hours) VALUES('"
+								+ currentTime + "','" + studNo + "','" + ASJtableLectSelect.jComboBox1.getSelectedItem()
+								+ "','" + ASJtableLectSelect.jComboBox2.getSelectedItem() + "','" + hours + "')");
 						dbh.doQuery(insertQuery);
 						dbh.stmt.executeUpdate(insertQuery);
-						
+
 					}
 					dbh.rs.close();
-	   				dbh.conn.close();	
+					dbh.conn.close();
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null, ex.getMessage());
 				}
-				
-				
+
 			}
 		});
 
@@ -209,9 +207,10 @@ public class ASJtableLect extends javax.swing.JFrame {
 			db.connectToDatabase();
 
 			// create query and pass into doQuery method
-			String selectQuery = "SELECT * FROM AttendanceSystem.Student WHERE StudModCode = '"
-					+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "' AND StudCourseCode = '"
-					+ ASJtableLectSelect.jComboBox2.getSelectedItem() + "'";
+			String selectQuery = "SELECT Student.StudentNumber, Student.StudentLastName, Student.StudentFirstname, StudentModules.Module FROM Student JOIN StudentModules ON Student.StudentNumber=StudentModules.StudentIdentity WHERE Student.StudCourseCode ='"
+					+ ASJtableLectSelect.jComboBox2.getSelectedItem() + "' AND StudentModules.Module = '"
+					+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'";
+
 			db.doQuery(selectQuery);
 
 			db.stmt.executeUpdate("USE AttendanceSystem");
