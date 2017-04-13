@@ -1,6 +1,7 @@
 package AttendanceSystemGUICode;
 
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -40,12 +41,12 @@ public class ASJtableView extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View Attendance", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-            },
-            new String [] {
-                "StudentID", "Last Name", "First Name", "Hours Attended", "Module Hours", "Attendance %"
-            }
+        jTable1.setModel(new DefaultTableModel(
+        	new Object[][] {
+        	},
+        	new String[] {
+        		"StudentID", "Last Name", "First Name", "Hours Attended", "Module Hours", "Attendance %"
+        	}
         ));
         jTable1.setName("View Attendance"); // NOI18N
         jScrollPane1.setViewportView(jTable1);

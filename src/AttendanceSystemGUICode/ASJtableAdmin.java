@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.TitledBorder;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -76,7 +77,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Student", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Add Student to Course", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))); // NOI18N
 
         jLabelStudent.setText("StudentID");
 
@@ -217,9 +218,9 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		try {
 			DatabaseHandler dbh = new DatabaseHandler();
 			dbh.connectToDatabase();
-			String insertQuery = ("insert into AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, StudModCode, StudCourseCode, Password) values ('"
-					+ jTextFieldStudent.getText() + "','" + jTextFieldLN.getText() + "','" + jTextFieldFN.getText()
-					+ jTextFieldPaswd.getText() + "')");
+			String insertQuery = ("insert into AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, StudCourseCode, Password) values ('"
+					+ jTextFieldStudent.getText() + "','" + jTextFieldLN.getText() + "','" + jTextFieldFN.getText() + "','" + jTextFieldPaswd.getText() + "','"
+					+ jComboBox1.getSelectedItem() + "')");
 			dbh.doQuery(insertQuery);
 
 			// dbh.conn =
@@ -258,6 +259,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
+		
 	}
     /**
      * @param args the command line arguments
