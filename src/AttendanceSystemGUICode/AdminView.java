@@ -4,6 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.Window;
+
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class AdminView extends javax.swing.JFrame {
 
@@ -25,9 +34,13 @@ public class AdminView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton1.setBounds(16, 266, 169, 38);
         jButton2 = new javax.swing.JButton();
+        jButton2.setBounds(16, 315, 169, 38);
         jButton3 = new javax.swing.JButton();
+        jButton3.setBounds(304, 315, 169, 38);
         jLabel1 = new javax.swing.JLabel();
+        jLabel1.setBounds(102, 11, 348, 245);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -36,8 +49,8 @@ public class AdminView extends javax.swing.JFrame {
 
         //setting the properties of create student button
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setMnemonic('c');
-        jButton1.setText("Create Student");
+        jButton1.setMnemonic('s');
+        jButton1.setText("Add Student To Course");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         
         //adding action listener to create student button
@@ -72,9 +85,9 @@ public class AdminView extends javax.swing.JFrame {
 
         //setting the properties of the create module button
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setMnemonic('c');
+        jButton3.setMnemonic('R');
         jButton3.setText("Create Module");
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jButton3.setBorder(new LineBorder(new Color(0, 0, 0), 2));
         
       //adding action listener to the create module button
         jButton3.addActionListener(new ActionListener() {
@@ -87,54 +100,38 @@ public class AdminView extends javax.swing.JFrame {
      				}
              });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(("img/lyitLogo.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(173, 173, 173))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(("img/lyitLogo.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addComponent(jPanel1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
         );
+        getContentPane().setLayout(layout);
+        jPanel1.setLayout(null);
+        jPanel1.add(jButton1);
+        jPanel1.add(jButton2);
+        jPanel1.add(jButton3);
+        jPanel1.add(jLabel1);
+        
+        JButton btnNewButton = new JButton("Add Student To Module");
+        btnNewButton.setMnemonic('m');
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		
+        	   ASJstudentToModule Module = new ASJstudentToModule();
+        	   Module.frame.setVisible(true);
+          	   
+        	}
+        });
+        btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnNewButton.setBounds(304, 266, 169, 38);
+        jPanel1.add(btnNewButton);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -180,5 +177,4 @@ public class AdminView extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    // End of variables declaration//GEN-END:variables
 }
