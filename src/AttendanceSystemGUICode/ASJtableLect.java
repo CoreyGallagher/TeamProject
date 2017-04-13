@@ -200,9 +200,9 @@ public class ASJtableLect extends javax.swing.JFrame {
 						String studNo = jTable2.getValueAt(i, 0).toString();
 						String hours = jTable2.getValueAt(i, 3).toString();
 						int number = i;
-						String insertQuery = ("INSERT INTO AttendanceSystem.AttendanceRecords(Date, StudentNo, ModuleCde, CourseCde, Hours) VALUES('"
+						String insertQuery = ("INSERT INTO AttendanceSystem.AttendanceRecords(Date, StudentNo, ModuleCde, CourseCde, HoursAttended, ModuleHours) VALUES('"
 								+ currentTime + "','" + studNo + "','" + ASJtableLectSelect.jComboBox1.getSelectedItem()
-								+ "','" + ASJtableLectSelect.jComboBox2.getSelectedItem() + "','" + hours + "')");
+								+ "','" + ASJtableLectSelect.jComboBox2.getSelectedItem() + "','" + hours + "','" +jComboBox1.getSelectedItem() +"')");
 						dbh.doQuery(insertQuery);
 						dbh.stmt.executeUpdate(insertQuery);
 
