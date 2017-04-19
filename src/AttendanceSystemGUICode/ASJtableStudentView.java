@@ -53,7 +53,7 @@ public class ASJtableStudentView extends javax.swing.JFrame {
                 	   StudentViewTable ViewATD = new StudentViewTable();
                 	   ViewATD.setVisible(true);
                 	   ViewATD.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
-                	   setVisible(false);
+                	  
                 	   
                    }
                 });
@@ -161,4 +161,5 @@ public class ASJtableStudentView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
+
 

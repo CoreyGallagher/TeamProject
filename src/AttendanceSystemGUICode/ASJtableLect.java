@@ -49,16 +49,6 @@ public class ASJtableLect extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
-	    
-
-		jScrollPane1 = new javax.swing.JScrollPane();
-		jTable1 = new javax.swing.JTable();
-		jPanel1 = new javax.swing.JPanel();
-		jScrollPane3 = new javax.swing.JScrollPane();
-		jTable2 = new javax.swing.JTable();
-		jLabel1 = new javax.swing.JLabel();
-		jComboBox1 = new javax.swing.JComboBox<>();
-		jButton4 = new javax.swing.JButton();
 
 
 		jTable1.setModel(
@@ -74,35 +64,6 @@ public class ASJtableLect extends javax.swing.JFrame {
 		jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Record Attendance", 0, 0,
 				new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-
-
-        jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-         
-            },
-            new String [] {
-                "StudentID", "LastName", "FirstName", "Hours", "Present"
-            }
-        ) {
-        	   public java.lang.Class<?> getColumnClass(int column) {
-                   switch (column) {
-                       case 0:
-                           return String.class;
-                       case 1:
-                           return String.class;
-                       case 2:
-                           return Integer.class;
-                       case 3:
-                           return Integer.class;
-                       case 4:
-                           return Boolean.class;
-                   }
-				return null;
-                   
-               }
-           });
-        
         
         jTable2.setGridColor(new java.awt.Color(0, 0, 0));
         jTable2.setInheritsPopupMenu(true);

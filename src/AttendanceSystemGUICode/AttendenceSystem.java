@@ -113,6 +113,11 @@ public class AttendenceSystem extends javax.swing.JFrame {
 				});
 			}
 		});
+		
+		
+		//L00221133 12345l
+		
+		
 		// buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		buttonPanel.add(jbtLecturer = new JButton("Lecturer"));
 		jbtLecturer.setFont(new java.awt.Font("Tahoma", 1, 20));
@@ -120,6 +125,8 @@ public class AttendenceSystem extends javax.swing.JFrame {
 		jbtLecturer.setHorizontalTextPosition(JButton.CENTER);
 		jbtLecturer.setVerticalTextPosition(JButton.BOTTOM);
 
+		
+		
 		// Event handling
 		jbtLecturer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -17,6 +17,8 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import java.awt.Button;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ASJstudentToModule {
 
@@ -51,7 +53,7 @@ public class ASJstudentToModule {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(51, 204, 255));
+		frame.getContentPane().setBackground(new Color(0, 204, 255));
 		frame.getContentPane().setForeground(new Color(0, 0, 0));
 		frame.setBounds(100, 100, 502, 263);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -76,6 +78,13 @@ public class ASJstudentToModule {
 		frame.getContentPane().add(lblStudentModule);
 		
 		Button button = new Button("Add To Module");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+			}
+		});
+		button.setBackground(Color.WHITE);
 		button.setBounds(159, 176, 151, 38);
 		frame.getContentPane().add(button);
 		

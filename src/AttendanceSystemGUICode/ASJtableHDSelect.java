@@ -82,7 +82,7 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
                 		   
                 	   	ASJtableView DptView = new ASJtableView();
                 	   	DptView.setVisible(true);
-                	   	setVisible(false);
+                	   	
                 	  
                 	}
                    
