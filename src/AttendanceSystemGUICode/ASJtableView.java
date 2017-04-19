@@ -132,15 +132,36 @@ public class ASJtableView extends javax.swing.JFrame {
 				// model.addTableModelListener(jTable2);
 
 				System.out.println("STEP 5(a) COMPLETE - Results of Query processed...");
-
+				
+				for (int j = 0; j < jTable1.getRowCount(); j++) {
+					
+					String hoursAttd = jTable1.getValueAt(j, 3).toString();
+					double hoursAttended = Integer.parseInt(hoursAttd);
+					String moduleHrs = jTable1.getValueAt(j, 4).toString();
+					double Module = Integer.parseInt(moduleHrs);
+					
+					double total = (hoursAttended / Module) * 100;
+					
+					jTable1.setValueAt(total, j, 5);
+					
+					
+				}
+				
+			
 			}
+			
+			//db.rs.close();
+			//db.conn.close();
+		
+			
 
 		} catch (SQLException e) {
 			System.out.println("Problem with SQL.\n" + e.getMessage());
 		}
-
+		
+		
+	
 	}
-
 	public static void main(String args[]) {
 		/* Set the Nimbus look and feel */
 		// <editor-fold defaultstate="collapsed" desc=" Look and feel setting

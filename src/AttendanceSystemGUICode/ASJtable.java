@@ -223,6 +223,9 @@ public class ASJtable  extends javax.swing.JFrame {
 			st = con.createStatement();
 			st.executeUpdate(query);
 			JOptionPane.showMessageDialog(null, "Query Executed");
+			
+		     con.close();
+			
 		}catch(Exception ex){
 			JOptionPane.showMessageDialog(null,  ex.getMessage());
 		}

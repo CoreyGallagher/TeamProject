@@ -135,9 +135,13 @@ public class ASJstudentToModule {
     				JOptionPane.showMessageDialog(null, "Query Executed");
     				
 
+    				dbh1.rs.close();
+    				dbh1.conn.close();
     			} catch (Exception ex) {
     				JOptionPane.showMessageDialog(null, ex.getMessage());
     			}
+            	
+            	
             }
         });
 		

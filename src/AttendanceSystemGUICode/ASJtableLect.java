@@ -155,17 +155,20 @@ public class ASJtableLect extends javax.swing.JFrame {
 					String currentTime = sdf.format(date);
 					DatabaseHandler dbh = new DatabaseHandler();
 					dbh.connectToDatabase();
+					String value = (String) jComboBox1.getSelectedItem();
 					dbh.stmt = dbh.conn.createStatement();
 					for (int i = 0; i <= jTable2.getRowCount(); i++) {
 
 						String studNo = jTable2.getValueAt(i, 0).toString();
 						String hours = jTable2.getValueAt(i, 3).toString();
+						
 						int number = i;
-						String insertQuery = ("INSERT INTO AttendanceSystem.AttendanceRecords(Date, StudentNo, ModuleCde, CourseCde, HoursAttended, ModuleHours) VALUES('"
-								+ currentTime + "','" + studNo + "','" + ASJtableLectSelect.jComboBox1.getSelectedItem()
-								+ "','" + ASJtableLectSelect.jComboBox2.getSelectedItem() + "','" + hours + "','" +jComboBox1.getSelectedItem() +"')");
+						String insertQuery = ("UPDATE AttendanceSystem.AttendanceRecords SET HoursAttended = HoursAttended +'" +hours + "' WHERE StudentNo = + '" +studNo+"' AND ModuleCde = + '"+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'");
+						String UpdateQuery = ("UPDATE AttendanceSystem.AttendanceRecords SET ModuleHours = ModuleHours +'" +value + "' WHERE StudentNo = + '" +studNo+ "'AND ModuleCde = + '"+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'");
 						dbh.doQuery(insertQuery);
+						dbh.doQuery(UpdateQuery);
 						dbh.stmt.executeUpdate(insertQuery);
+						dbh.stmt.executeUpdate(UpdateQuery);
 
 					}
 					dbh.rs.close();

@@ -245,7 +245,11 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 			 * jTextFieldLN.getText(), jTextFieldFN.getText(),
 			 * jTextFieldCourse.getText(), jTextFieldModule.getText(),
 			 * jTextFieldPaswd.getText() });
+		
 			 */
+			
+			dbh.rs.close();
+			dbh.conn.close();
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
