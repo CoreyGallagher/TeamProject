@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 public class SecurityDialog extends JDialog {
 	// Declare Components of our JDialog...
 
@@ -41,31 +42,12 @@ public class SecurityDialog extends JDialog {
 		jpButtons = new JPanel();
 		jpButtons.add(jbtOK = new JButton("OK"));
 		jpButtons.add(jbtCancel = new JButton("Cancel"));
-		
-		//jpLabels.setBackground(Color.GREEN);
-		//jpTextFields.setBackground(Color.GREEN);
-		//jpButtons.setBackground(Color.GREEN);
-		//jtfUsername.setBackground(Color.GREEN);
-		//jtfPassword.setBackground(Color.GREEN);
 
 		// Set up the JFrame
 		add(jlblImage, BorderLayout.NORTH);
 		add(jpLabels, BorderLayout.WEST);
 		add(jpTextFields, BorderLayout.CENTER);
 		add(jpButtons, BorderLayout.SOUTH);
-		// Add an ANONYMOUS LISTENER CLASS to jbtOK
-		/*
-		 * jbtOK.addActionListener(new ActionListener() { public void
-		 * actionPerformed(ActionEvent e) { // getText() in jtfUsername and
-		 * jtfPassword userNameEntered = jtfUsername.getText(); passwordEntered
-		 * = new String(jtfPassword.getPassword()); if
-		 * (passwordEntered.equals(requiredPassword)) { ASJtableHDSelect
-		 * DptSelect = new ASJtableHDSelect(); DptSelect.setVisible(true);
-		 * DptSelect.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		 * s1.dispose(); } else { JOptionPane.showMessageDialog(null,
-		 * "INCORRECT PASSWORD ENTERED", "PASSWORD ERROR",
-		 * JOptionPane.ERROR_MESSAGE); } } });
-		 */
 
 		// Add an ANONYMOUS LISTENER CLASS to jbtCancel
 		jbtCancel.addActionListener(new ActionListener() {
@@ -75,13 +57,4 @@ public class SecurityDialog extends JDialog {
 		});
 	}
 
-	/*
-	 * public static void main(String[] args) { // CONSTRUCT a SecurityDialog
-	 * object called dialog SecurityDialog dialog = new SecurityDialog();
-	 * 
-	 * dialog.setTitle("Security Screen"); dialog.pack(); // Add the
-	 * DISPOSE_ON_CLOSE operation to dialog
-	 * dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-	 * dialog.setLocationRelativeTo(null); dialog.setVisible(true); }
-	 */
 }
