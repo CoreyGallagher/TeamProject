@@ -1,5 +1,7 @@
 package AttendanceSystemGUICode;
 
+import javax.swing.JOptionPane;
+
 public class CreateModule extends javax.swing.JFrame {
 
     /**
@@ -27,6 +29,11 @@ public class CreateModule extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administrator ");
@@ -119,9 +126,26 @@ public class CreateModule extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    	try {
+			DatabaseHandler dbh1 = new DatabaseHandler();
+			dbh1.connectToDatabase();
+			String insertQuery = ("insert into AttendanceSystem.Module(ModuleCode, ModuleName, ModuleHours) values ('"
+					+ jTextField4.getText() + "','"
+					+ jTextField5.getText() + "','" +jTextField6.getText()+ "')");
+			dbh1.doQuery(insertQuery);
+
+			// dbh.conn =
+			// DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
+			dbh1.stmt = dbh1.conn.createStatement();
+			dbh1.stmt.executeUpdate(insertQuery);
+			JOptionPane.showMessageDialog(null, "Query Executed");
+			
+
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -152,7 +176,9 @@ public class CreateModule extends javax.swing.JFrame {
                 new CreateModule().setVisible(true);
             }
         });
+        
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

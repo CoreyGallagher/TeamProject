@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
@@ -19,12 +20,42 @@ import java.awt.Button;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 
 public class ASJstudentToModule {
 
 	public JFrame frame;
 	private JTextField textField;
+	private JComboBox comboBox;
+	
 
+    
+
+	/* private void jButtonbuttonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonAddActionPerformed
+			try {
+				DatabaseHandler dbh1 = new DatabaseHandler();
+				dbh1.connectToDatabase();
+				String insertQuery = ("insert into AttendanceSystem.StudentModules(StudentIdentity, Module) values ('"
+						+ textField.getText() + "','"
+						+ comboBox.getSelectedItem() + "')");
+				dbh1.doQuery(insertQuery);
+
+				// dbh.conn =
+				// DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
+				dbh1.stmt = dbh1.conn.createStatement();
+				dbh1.stmt.executeUpdate(insertQuery);
+				JOptionPane.showMessageDialog(null, "Query Executed");
+				
+
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, ex.getMessage());
+			}
+		}*/
 	/**
 	 * Launch the application.
 	 */
@@ -87,10 +118,33 @@ public class ASJstudentToModule {
 		button.setBackground(Color.WHITE);
 		button.setBounds(159, 176, 151, 38);
 		frame.getContentPane().add(button);
+		button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	try {
+    				DatabaseHandler dbh1 = new DatabaseHandler();
+    				dbh1.connectToDatabase();
+    				String insertQuery = ("insert into AttendanceSystem.StudentModules(StudentIdentity, Module) values ('"
+    						+ textField.getText() + "','"
+    						+ comboBox.getSelectedItem() + "')");
+    				dbh1.doQuery(insertQuery);
+
+    				// dbh.conn =
+    				// DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
+    				dbh1.stmt = dbh1.conn.createStatement();
+    				dbh1.stmt.executeUpdate(insertQuery);
+    				JOptionPane.showMessageDialog(null, "Query Executed");
+    				
+
+    			} catch (Exception ex) {
+    				JOptionPane.showMessageDialog(null, ex.getMessage());
+    			}
+            }
+        });
 		
 		JLabel lblAddStudentTo = new JLabel("Add Student To Module");
 		lblAddStudentTo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblAddStudentTo.setBounds(149, 11, 238, 14);
 		frame.getContentPane().add(lblAddStudentTo);
+		
 	}
 }
