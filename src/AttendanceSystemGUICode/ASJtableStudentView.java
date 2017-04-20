@@ -51,7 +51,7 @@ public class ASJtableStudentView extends javax.swing.JFrame {
 				StudentViewTable ViewATD = new StudentViewTable();
 				ViewATD.setVisible(true);
 				ViewATD.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+				//System.out.print(" "+AttendenceSystem.getUserNameEntered());
 			}
 		});
 

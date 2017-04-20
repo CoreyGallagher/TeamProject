@@ -24,13 +24,28 @@ public class AttendenceSystem extends javax.swing.JFrame {
 	// private JLabel jlblOne;
 	// private String jtfPassword;
 	public JPasswordField jfPassword;
-	public String userNameEntered, passwordEntered;
+	public static String userNameEntered;
+	public String passwordEntered;
 
 	public AttendenceSystem() {
+
+		// setting the cover photo off the homepage
+		picPanel = new JPanel();
+		// set up college photo
+		picButton = new JButton("Letterkenny Institute of Technology Attendance System",
+				new ImageIcon("img/Lyit5.jpg"));
+		// Center the icon and text and place the text under the icon
+		picButton.setHorizontalTextPosition(JButton.CENTER);
+		picButton.setVerticalTextPosition(JButton.TOP);
+		picButton.setFont(new Font("Impact", Font.BOLD, 20));
+		picButton.setBackground(Color.LIGHT_GRAY);
+		picPanel.add(picButton, BorderLayout.NORTH);
+		add(picPanel);
+
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridLayout(0, 4));
-
 		buttonPanel.add(jbtAdmin = new JButton("Administrator"));
+
 		jbtAdmin.setFont(new java.awt.Font("Tahoma", 1, 20));
 		jbtAdmin.setMnemonic('a');
 		jbtAdmin.setHorizontalTextPosition(JButton.CENTER);
@@ -50,43 +65,37 @@ public class AttendenceSystem extends javax.swing.JFrame {
 							// boolean p = false;
 							userNameEntered = s2.jtfUsername.getText();
 							passwordEntered = new String(s2.jtfPassword.getPassword());
-							DatabaseHandler paswd = new DatabaseHandler();
-							paswd.connectToDatabase();
-							paswd.stmt = paswd.conn.createStatement();
+							DatabaseHandler passwd = new DatabaseHandler();
+							passwd.connectToDatabase();
+							passwd.stmt = passwd.conn.createStatement();
 							String sql = "Select Username, Password from AttendanceSystem.SystemUsers WHERE SystemUsers.Username='"
 									+ userNameEntered + "' and SystemUsers.Password='" + passwordEntered + "'";
-							paswd.doQuery(sql);
-							// pst = passwd.conn.prepareStatement(sql);
-							paswd.rs = paswd.stmt.executeQuery(sql);
-							while (paswd.rs.next()) {
-								if (userNameEntered.equals(paswd.rs.getString("SystemUsers.Username"))
-										&& (passwordEntered.equals(paswd.rs.getString("SystemUsers.Password")))) {
+							passwd.doQuery(sql);
+							passwd.rs = passwd.stmt.executeQuery(sql);
+							while (passwd.rs.next()) {
+								if (userNameEntered.equals(passwd.rs.getString("SystemUsers.Username"))) {
+									if (passwordEntered.equals(passwd.rs.getString("SystemUsers.Password"))) {
+										JOptionPane.showMessageDialog(null, "Login Successful");
+										AdminView adView = new AdminView();
+										adView.setVisible(true);
+										adView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+										s2.dispose();
+										System.out.print("logged in");
 
-									JOptionPane.showMessageDialog(null, "Login Successfully");
-									AdminView adView = new AdminView();
-									adView.setVisible(true);
-									adView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-									s2.dispose();
-									System.out.print("logged in");
-
-								}
-
-								else if (!paswd.rs.next())
-
-								{
+									} else {
+										JOptionPane.showMessageDialog(null, "Incorrect Password");
+									}
+								} else {
 									JOptionPane.showMessageDialog(null, "Incorrect Login");
 								}
-
-								paswd.stmt.close();
-								paswd.conn.close();
 							}
+							passwd.stmt.close();
+							passwd.conn.close();
 						} catch (Exception g) {
 							// e.printStackTrace();
 							JOptionPane.showMessageDialog(null, "PROBLEM OCCURED !!!! ");
 						}
-
 					}
-
 				});
 			}
 		});
@@ -116,6 +125,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 						try {
 							userNameEntered = s1.jtfUsername.getText();
 							passwordEntered = new String(s1.jtfPassword.getPassword());
+							setUserNameEntered(userNameEntered);
 							DatabaseHandler passwd = new DatabaseHandler();
 							passwd.connectToDatabase();
 							passwd.stmt = passwd.conn.createStatement();
@@ -130,6 +140,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 										JOptionPane.showMessageDialog(null, "Login Successful");
 										ASJtableStudentView StudView = new ASJtableStudentView();
 										StudView.setVisible(true);
+										// setUserNameEntered(userNameEntered);
 										StudView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 										s1.dispose();
 										System.out.print("logged in");
@@ -152,7 +163,6 @@ public class AttendenceSystem extends javax.swing.JFrame {
 			}
 		});
 
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		buttonPanel.add(jbtLecturer = new JButton("Lecturer"));
 		jbtLecturer.setFont(new java.awt.Font("Tahoma", 1, 20));
 		jbtLecturer.setMnemonic('l');
@@ -185,7 +195,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 							while (passwd.rs.next()) {
 								if (userNameEntered.equals(passwd.rs.getString("Lecturer.LecturerID"))) {
 									if (passwordEntered.equals(passwd.rs.getString("Lecturer.Password"))) {
-										JOptionPane.showMessageDialog(null, "Login Successfully");
+										JOptionPane.showMessageDialog(null, "Login Successful");
 										ASJtableLectSelect Asjls = new ASJtableLectSelect();
 										Asjls.setVisible(true);
 										Asjls.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -210,7 +220,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 			}
 		});
 
-		buttonPanel.add(jbtDeptHead = new JButton("Dept Head"));
+		buttonPanel.add(jbtDeptHead = new JButton("Department Head"));
 		jbtDeptHead.setFont(new java.awt.Font("Tahoma", 1, 20));
 		jbtDeptHead.setMnemonic('d');
 		jbtDeptHead.setHorizontalTextPosition(JButton.CENTER);
@@ -240,7 +250,7 @@ public class AttendenceSystem extends javax.swing.JFrame {
 							while (passwd.rs.next()) {
 								if (userNameEntered.equals(passwd.rs.getString("SystemUsers.Username"))) {
 									if (passwordEntered.equals(passwd.rs.getString("SystemUsers.Password"))) {
-										JOptionPane.showMessageDialog(null, "Login Successfully");
+										JOptionPane.showMessageDialog(null, "Login Successful");
 										ASJtableHDSelect DptSelect = new ASJtableHDSelect();
 										DptSelect.setVisible(true);
 										DptSelect.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -265,27 +275,24 @@ public class AttendenceSystem extends javax.swing.JFrame {
 			}
 		});
 
-		// setting the cover photo off the homepage
-		picPanel = new JPanel();
-		// set up college photo
-		picButton = new JButton("LYIT", new ImageIcon("img/Lyit5.jpg"));
-		// Center the icon and text and place the text under the icon
-		picButton.setHorizontalTextPosition(JButton.CENTER);
-		picButton.setVerticalTextPosition(JButton.TOP);
-		picButton.setFont(new Font("Impact", Font.BOLD, 20));
-		picButton.setBackground(Color.LIGHT_GRAY);
-		picButton.setMnemonic('L');
-		picPanel.add(picButton, BorderLayout.NORTH);
-		add(picPanel);
-
 	}
 
 	public static void main(String[] args) {
 		AttendenceSystem frame = new AttendenceSystem();
 		frame.setTitle("Attendance System");
-		frame.setSize(800, 390);
+		// frame.pack();
+		frame.setSize(1000, 395);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+	}
+
+	public static String getUserNameEntered() {
+		return userNameEntered;
+	}
+
+	@SuppressWarnings("static-access")
+	public void setUserNameEntered(String userNameEntered) {
+		this.userNameEntered = userNameEntered;
 	}
 }

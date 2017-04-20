@@ -1,5 +1,9 @@
 package AttendanceSystemGUICode;
-
+/**
+ * Administrator Menu
+ * 
+ * @Author Cloud Grp1
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,16 +18,16 @@ import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class AdminView extends javax.swing.JFrame {
-
-	/**
-	 * Creates new form AdminView
-	 */
+	
+	// constructor
 	public AdminView() {
 		initComponents();
 	}
 
+	// initialize jFrame components
 	private void initComponents() {
 
+		// create jFrame components
 		jPanel1 = new javax.swing.JPanel();
 		jButton1 = new javax.swing.JButton();
 		jButton1.setBounds(16, 266, 169, 38);
@@ -34,8 +38,10 @@ public class AdminView extends javax.swing.JFrame {
 		jLabel1 = new javax.swing.JLabel();
 		jLabel1.setBounds(102, 11, 348, 245);
 
+		// dispose frame on exit
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+		// set background colour
 		jPanel1.setBackground(new java.awt.Color(153, 153, 0));
 		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administrator View",
 				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
@@ -92,8 +98,10 @@ public class AdminView extends javax.swing.JFrame {
 			}
 		});
 
+		// add image to jLabel
 		jLabel1.setIcon(new javax.swing.ImageIcon(("img/lyitLogo.png")));
-
+		
+		// add layout and buttons to panel
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		layout.setHorizontalGroup(layout.createParallelGroup(Alignment.LEADING).addComponent(jPanel1,
 				GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE));
@@ -106,6 +114,7 @@ public class AdminView extends javax.swing.JFrame {
 		jPanel1.add(jButton3);
 		jPanel1.add(jLabel1);
 
+		// add student to module button
 		JButton btnNewButton = new JButton("Add Student To Module");
 		btnNewButton.setMnemonic('m');
 		btnNewButton.addActionListener(new ActionListener() {
@@ -116,18 +125,16 @@ public class AdminView extends javax.swing.JFrame {
 
 			}
 		});
+		// set color and font
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.setBounds(304, 266, 169, 38);
 		jPanel1.add(btnNewButton);
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
-	/**
-	 * @param args
-	 *            the command line arguments
-	 */
+	// create and display frame
 	public static void main(String args[]) {
 
 		try {
@@ -147,7 +154,7 @@ public class AdminView extends javax.swing.JFrame {
 			java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 
-		/* Create and display the form */
+		// Create and display the form
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new AdminView().setVisible(true);
@@ -155,7 +162,7 @@ public class AdminView extends javax.swing.JFrame {
 		});
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	// Variables declaration
 	private javax.swing.JButton jButton1;
 	private javax.swing.JButton jButton2;
 	private javax.swing.JButton jButton3;

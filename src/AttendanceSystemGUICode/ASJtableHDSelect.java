@@ -49,12 +49,12 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 		jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
 		jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cloud and Green", "Applied" }));
+		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CLGTS1", "COMPS1", "CSDFS1" }));
 		jComboBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
 		jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-		jComboBox1.setModel(
-				new javax.swing.DefaultComboBoxModel(new String[] { "Security and the Cloud", "Team and Project" }));
+		jComboBox1
+				.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MANGCP701", "ALGSCP701", "DATACP701" }));
 		jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
 		// jLabel3.setIcon(new
@@ -73,7 +73,7 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 		jButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				ASJtableView DptView = new ASJtableView();
+				DeptHeadView DptView = new DeptHeadView();
 				DptView.setVisible(true);
 
 			}
@@ -171,8 +171,8 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton jButton1;
-	private javax.swing.JComboBox<String> jComboBox1;
-	private javax.swing.JComboBox<String> jComboBox2;
+	public static javax.swing.JComboBox<String> jComboBox1;
+	public static javax.swing.JComboBox<String> jComboBox2;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;

@@ -136,7 +136,10 @@ public class ASJtableLect extends javax.swing.JFrame {
 						String studNo = jTable2.getValueAt(i, 0).toString();
 						String hours = jTable2.getValueAt(i, 3).toString();
 
-						String dQuery = ("UPDATE AttendanceSystem.AttendanceRecords SET Date = '" + currentTime + "'");
+						String dQuery = ("UPDATE AttendanceSystem.AttendanceRecords SET Date = '" + currentTime
+								+ "' WHERE StudentNo = + '" + studNo + "' AND ModuleCde = + '"
+								+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'");
+
 						String hQuery = ("UPDATE AttendanceSystem.AttendanceRecords SET HoursAttended = HoursAttended +'"
 								+ hours + "' WHERE StudentNo = + '" + studNo + "' AND ModuleCde = + '"
 								+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'");
@@ -145,6 +148,7 @@ public class ASJtableLect extends javax.swing.JFrame {
 								+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'");
 						dbh.doQuery(dQuery);
 						dbh.doQuery(hQuery);
+
 						dbh.doQuery(UpdateQuery);
 						dbh.stmt.executeUpdate(dQuery);
 						dbh.stmt.executeUpdate(hQuery);

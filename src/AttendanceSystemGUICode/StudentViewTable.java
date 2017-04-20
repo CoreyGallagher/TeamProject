@@ -42,7 +42,7 @@ public class StudentViewTable extends javax.swing.JFrame {
 
 		jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 		jTable2.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Date", "Hours Attended", "Module Hours to Date", "Attendance %" }));
+				new String[] { "Date", "Hours Attended", "Module Hours", "Attendance %" }));
 		jTable2.getColumnModel().getColumn(0).setPreferredWidth(70);
 		jTable2.getColumnModel().getColumn(0).setMinWidth(13);
 		jScrollPane2.setViewportView(jTable2);
@@ -66,18 +66,19 @@ public class StudentViewTable extends javax.swing.JFrame {
 		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
 				jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
 				javax.swing.GroupLayout.PREFERRED_SIZE));
-
+		
 		pack();
 	}
 
 	public void showTable() {
-
+		// String studentNumber = AttendanceSystem.s1.getUserNameEntered();
 		try {
 			DatabaseHandler db = new DatabaseHandler();
 			// connect to database
 			db.connectToDatabase();
-			String selectQuery = "SELECT AttendanceRecords.Date, AttendanceRecords.ModuleCde, AttendanceRecords.studentNo, AttendanceRecords.HoursAttended FROM AttendanceRecords WHERE AttendanceRecords.StudentNo ="
-					+ "' AND AttendanceRecords.ModuleCde ='" + ASJtableStudentView.jComboBox1.getSelectedItem() + "'";
+			String selectQuery = "SELECT AttendanceRecords.Date, AttendanceRecords.StudentNo, AttendanceRecords.HoursAttended, AttendanceRecords.ModuleHours FROM AttendanceRecords WHERE AttendanceRecords.ModuleCde ='"
+					+ ASJtableStudentView.jComboBox1.getSelectedItem() + "'AND AttendanceRecords.StudentNo= '"
+					+ AttendenceSystem.getUserNameEntered() + "'";
 
 			db.doQuery(selectQuery);
 
@@ -88,15 +89,19 @@ public class StudentViewTable extends javax.swing.JFrame {
 
 				// Can get columns by name, or number which starts at 1
 				String Date = rs.getString("Date");
-				String ModuleCode = rs.getString("ModuleCde");
-				String Hours = rs.getString("HoursAttended");
-				// String course = rs.getString("StudCourseCode");
-				System.out.println(Date + " " + ModuleCode + " " + Hours + " ");
+				String hoursAtt = rs.getString("HoursAttended");
+				String modHours = rs.getString("ModuleHours");
+				double hoursAttended = Integer.parseInt(hoursAtt);
+				//String modHrs = jTable2.getValueAt(1, 4).toString();
+				double Module = Integer.parseInt(modHours);
+
+				double total = (hoursAttended / Module) * 100;
+				
+				System.out.println(Date + " " + hoursAtt + " " + modHours + " ");
 				// boolean present = true;
-				Object[] content = { Date, ModuleCode, Hours, null };
-
+				Object[] content = { Date, hoursAtt, modHours, total };
 				DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-
+				//jTable2.setValueAt(total, j, 5);
 				model.addRow(content);
 				// model.addTableModelListener(jTable2);
 

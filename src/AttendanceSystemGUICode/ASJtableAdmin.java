@@ -1,5 +1,10 @@
 package AttendanceSystemGUICode;
 
+/**
+ * Administrator Adds Student To Course
+ *
+ * @author Cloud Grp1
+ */
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.*;
@@ -7,10 +12,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.TitledBorder;
 
-/**
- *
- * @author Cloud Grp1
- */
 @SuppressWarnings("serial")
 public class ASJtableAdmin extends javax.swing.JFrame {
 
@@ -24,9 +25,10 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		initComponents();
 	}
 
+	// initialize frame components
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initComponents() {
-
+		// JFrame components
 		jPanel1 = new javax.swing.JPanel();
 		jLabelStudent = new javax.swing.JLabel();
 		jLabelLN = new javax.swing.JLabel();
@@ -43,14 +45,14 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		jTextFieldStudent = new javax.swing.JTextField();
 		jButton1 = new javax.swing.JButton();
 		jComboBox1 = new javax.swing.JComboBox<String>();
-
+		// exit on close
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setBackground(new java.awt.Color(255, 0, 0));
-
+		// set background color and border
 		jPanel1.setBackground(new java.awt.Color(51, 204, 255));
 		jPanel1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Add Student to Course",
 				TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))); // NOI18N
-
+		// set JLabel Text
 		jLabelStudent.setText("StudentID");
 
 		jLabelLN.setText("Last Name");
@@ -60,13 +62,13 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		jLabelCourse.setText("Course");
 
 		jLabelPaswd.setText("Password");
-
+		// add action listener to last name
 		jTextFieldLN.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jTextFieldLNActionPerformed(evt);
 			}
 		});
-
+		// set text and add action listener to add JButton
 		jButtonAdd.setMnemonic('a');
 		jButtonAdd.setText("ADD");
 		jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +77,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 			}
 		});
 
+		// finish button
 		jButton2.setMnemonic('f');
 		jButton2.setText("FINISH");
 		jButton2.setToolTipText("");
@@ -88,12 +91,12 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		jTable_TableAS.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "StudentID", "LastName", "FirstName", "Password", "Course" }));
 		jScrollPane1.setViewportView(jTable_TableAS);
-
+		// delete button
 		jButton1.setMnemonic('d');
 		jButton1.setText("DELETE");
 
 		jComboBox1.setModel(new DefaultComboBoxModel(new String[] { "CLGTS1", "CSDFS1", "COMPS1" }));
-
+		// net beans window builder positioning of components
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING).addGroup(jPanel1Layout
 				.createSequentialGroup().addContainerGap(44, Short.MAX_VALUE)
@@ -169,30 +172,31 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		getContentPane().setLayout(layout);
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
+	// add action listener to JTextfield
 	private void jTextFieldLNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextFieldLNActionPerformed
 		// TODO add your handling code here:
 	}// GEN-LAST:event_jTextFieldLNActionPerformed
 
+	// add action event to add button
 	private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonAddActionPerformed
 		try {
+			// connect to database and execute query
 			DatabaseHandler dbh = new DatabaseHandler();
 			dbh.connectToDatabase();
+			// insert student into course
 			String insertQuery = ("insert into AttendanceSystem.Student(StudentNumber, StudentLastName, StudentFirstName, Password, StudCourseCode) values ('"
 					+ jTextFieldStudent.getText() + "','" + jTextFieldLN.getText() + "','" + jTextFieldFN.getText()
 					+ "','" + jTextFieldPaswd.getText() + "','" + jComboBox1.getSelectedItem() + "')");
 			dbh.doQuery(insertQuery);
-
-			// dbh.conn =
-			// DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
 			dbh.stmt = dbh.conn.createStatement();
 			dbh.stmt.executeUpdate(insertQuery);
 			JOptionPane.showMessageDialog(null, "Query Executed");
 			DefaultTableModel model = (DefaultTableModel) jTable_TableAS.getModel();
 			model.addRow(new Object[] { jTextFieldStudent.getText(), jTextFieldLN.getText(), jTextFieldFN.getText(),
 					jComboBox1.getSelectedItem(), jTextFieldPaswd.getText() });
-
+			// error handling
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
@@ -219,6 +223,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 
 	}
 
+	// create and display frame
 	public static void main(String args[]) {
 
 		try {
@@ -241,7 +246,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 			java.util.logging.Logger.getLogger(ASJtableAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null,
 					ex);
 		}
-
+		// create and display frame
 		ASJtableAdmin frame = new ASJtableAdmin();
 		frame.setTitle("Administrator");
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -249,7 +254,7 @@ public class ASJtableAdmin extends javax.swing.JFrame {
 		frame.setVisible(true);
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	// Variables declaration
 	private javax.swing.JButton jButton1;
 	private javax.swing.JButton jButton2;
 	private javax.swing.JButton jButtonAdd;
