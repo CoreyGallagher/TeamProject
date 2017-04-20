@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -55,7 +56,7 @@ public class ASJtableView extends javax.swing.JFrame {
 						.addContainerGap(15, Short.MAX_VALUE)));
 
 		jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-		jTable1.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "StudentID", "Last Name", "First Name",
+		jTable1.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Date", "Last Name", "First Name",
 				"Hours Attended", "Module Hours", "Attendance %" }));
 		jTable1.setName("View Attendance"); // NOI18N
 		jScrollPane1.setViewportView(jTable1);
@@ -120,6 +121,12 @@ public class ASJtableView extends javax.swing.JFrame {
 					double total = (hoursAttended / Module) * 100;
 
 					jTable1.setValueAt(total, j, 5);
+					
+					if(Date.equals("2017-04-20 17:43:01.0")&&total<=55.00){
+						System.out.println("Warning, student's attendance % low!!");
+						JOptionPane.showMessageDialog(null, "Warning, student's attendance % low!!"+lName+" "+fName);
+					}
+					
 
 				}
 
