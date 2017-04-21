@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /**
+ * Lecturer Menu
  *
  * @author Cloud Grp1
  */
@@ -15,12 +16,14 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 	/**
 	 * Creates new form ASJtableSelect
 	 */
+	// constructor
 	public ASJtableLectSelect() {
 		initComponents();
 	}
 
+	// initialize components
 	public void initComponents() {
-
+		// components
 		jPanel1 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
 		jLabel3 = new javax.swing.JLabel();
@@ -29,11 +32,11 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 		jLabel1 = new javax.swing.JLabel();
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
-
+		// dispose on close
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		setTitle("Lecturer");
 		setBackground(new java.awt.Color(153, 153, 0));
-
+		// set text, fonts etc
 		jPanel1.setBackground(new java.awt.Color(153, 153, 0));
 		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Record/View Attendance",
 				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
@@ -64,7 +67,7 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 		jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 12));
 		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLGTS1", "COMPS1", "CSDFS1" }));
 		jComboBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
+		// lyit logo
 		jLabel1.setIcon(new javax.swing.ImageIcon(("img/lyitLogo.png")));
 
 		// creating button 1 that will record attendance
@@ -84,7 +87,7 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 		});
 
 		// creating view attendance for lecturer
-		jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		jButton2.setFont(new java.awt.Font("Tahoma", 1, 12));
 		jButton2.setMnemonic('v');
 		jButton2.setText("View Attendance");
 		jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -97,7 +100,7 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 
 			}
 		});
-
+		// netbeans window builder layout and component positioning
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +168,7 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 						.addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
 								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
-
+		// pack frame
 		pack();
 	}
 
@@ -174,14 +177,11 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 	}
 
 	@SuppressWarnings("unused")
-	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
+	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
 		// TODO add your handling code here:
 	}
 
-	/**
-	 * @param args
-	 *            the command line arguments
-	 */
+	// create and display frame
 	public static void main(String args[]) {
 
 		try {
@@ -208,11 +208,10 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 		ASJtableLectSelect lectSelect = new ASJtableLectSelect();
 		lectSelect.setVisible(true);
 		lectSelect.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		/* Create and display the form */
 
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	// Variables declaration
 	private javax.swing.JButton jButton1;
 	private javax.swing.JButton jButton2;
 	public static javax.swing.JComboBox<String> jComboBox1;
@@ -221,5 +220,4 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JPanel jPanel1;
-	// End of variables declaration//GEN-END:variables
-}
+}// end of class

@@ -10,19 +10,21 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 /**
+ * Lecturer Marks Attendance
  *
  * @author Cloud Grp1
  */
 @SuppressWarnings("serial")
 public class ASJtableLect extends javax.swing.JFrame {
-
+	// constructor
 	public ASJtableLect() {
 		initComponents();
 		showTable();
 	}
 
+	// initialize components
 	private void initComponents() {
-
+		// components
 		jScrollPane1 = new javax.swing.JScrollPane();
 		jTable1 = new javax.swing.JTable();
 		jPanel1 = new javax.swing.JPanel();
@@ -31,14 +33,14 @@ public class ASJtableLect extends javax.swing.JFrame {
 		jLabel1 = new javax.swing.JLabel();
 		jComboBox1 = new javax.swing.JComboBox<>();
 		jButton4 = new javax.swing.JButton();
-
+		// set JTable model
 		jTable1.setModel(
 				new javax.swing.table.DefaultTableModel(
 						new Object[][] { { null, null, null, null }, { null, null, null, null },
 								{ null, null, null, null }, { null, null, null, null } },
 						new String[] { "Title 1", "Title 2", "Title 3", "Title 4" }));
 		jScrollPane1.setViewportView(jTable1);
-
+		// dispose on close
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		setTitle("Lecturer ");
 
@@ -53,7 +55,7 @@ public class ASJtableLect extends javax.swing.JFrame {
 
 		jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 		jTable2.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
-
+				// set JTable column headings
 		}, new String[] { "StudentID", "LastName", "FirstName", "Hours", "Present" }) {
 			public java.lang.Class<?> getColumnClass(int column) {
 				switch (column) {
@@ -74,25 +76,8 @@ public class ASJtableLect extends javax.swing.JFrame {
 		jTable2.setInheritsPopupMenu(true);
 		jTable2.setRowHeight(21);
 		jScrollPane3.setViewportView(jTable2);
-
-		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
-		jComboBox1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Security password for entry to add bonus
-				String value = (String) jComboBox1.getSelectedItem();
-
-				int rowCount;
-				rowCount = jTable2.getRowCount();
-
-				for (int i = 0; i < rowCount; i++) {
-					jTable2.setValueAt(value, i, 3);
-				}
-
-			}
-		});
-
 		jLabel1.setText("Class Hours");
-
+		// hours JComboBox and event handling
 		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 		jComboBox1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -106,13 +91,13 @@ public class ASJtableLect extends javax.swing.JFrame {
 				}
 			}
 		});
-
+		// table listener set hours to zero if not present
 		jTable2.getModel().addTableModelListener(new TableModelListener() {
 			public void tableChanged(TableModelEvent e) {
 				if (e.getType() == TableModelEvent.UPDATE) {
 					int row = e.getFirstRow();
 					int column = e.getColumn();
-
+					// present box unticked
 					if (column == 4) {
 						TableModel model = (TableModel) e.getSource();
 						model.setValueAt(0, row, 3);
@@ -121,6 +106,7 @@ public class ASJtableLect extends javax.swing.JFrame {
 			}
 		});
 
+		// event handling save button
 		jButton4.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
@@ -131,6 +117,7 @@ public class ASJtableLect extends javax.swing.JFrame {
 					dbh.connectToDatabase();
 					String value = (String) jComboBox1.getSelectedItem();
 					dbh.stmt = dbh.conn.createStatement();
+					// update database when attendance complete
 					for (int i = 0; i <= jTable2.getRowCount(); i++) {
 
 						String studNo = jTable2.getValueAt(i, 0).toString();
@@ -146,15 +133,16 @@ public class ASJtableLect extends javax.swing.JFrame {
 						String UpdateQuery = ("UPDATE AttendanceSystem.AttendanceRecords SET ModuleHours = ModuleHours +'"
 								+ value + "' WHERE StudentNo = + '" + studNo + "'AND ModuleCde = + '"
 								+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'");
-						dbh.doQuery(dQuery);
-						dbh.doQuery(hQuery);
+						//dbh.doQuery(dQuery);
+						//dbh.doQuery(hQuery);
 
-						dbh.doQuery(UpdateQuery);
+						//dbh.doQuery(UpdateQuery);
 						dbh.stmt.executeUpdate(dQuery);
 						dbh.stmt.executeUpdate(hQuery);
 						dbh.stmt.executeUpdate(UpdateQuery);
 
 					}
+					// close database connection
 					dbh.rs.close();
 					dbh.conn.close();
 				} catch (Exception ex) {
@@ -163,12 +151,13 @@ public class ASJtableLect extends javax.swing.JFrame {
 
 			}
 		});
-
-		jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		// set save button fonts etc
+		jButton4.setFont(new java.awt.Font("Tahoma", 1, 12));
 		jButton4.setMnemonic('s');
 		jButton4.setText("SAVE ");
 		jButton4.setBorder(null);
 
+		// netbeans window builder code for layout and component positioning
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,14 +191,15 @@ public class ASJtableLect extends javax.swing.JFrame {
 						.addGroup(layout.createSequentialGroup().addComponent(jPanel1,
 								javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addGap(0, 0, Short.MAX_VALUE)));
-
+		// pack frame
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
+	// show attendance table for marking
 	public void showTable() {
 
 		try {
-			// ASJtableLect asj = new ASJtableLect();
+			// database handler
 			DatabaseHandler db = new DatabaseHandler();
 			// connect to database
 			db.connectToDatabase();
@@ -219,11 +209,10 @@ public class ASJtableLect extends javax.swing.JFrame {
 					+ ASJtableLectSelect.jComboBox2.getSelectedItem() + "' AND StudentModules.Module = '"
 					+ ASJtableLectSelect.jComboBox1.getSelectedItem() + "'";
 
-			db.doQuery(selectQuery);
-
 			db.stmt.executeUpdate("USE AttendanceSystem");
 			ResultSet rs = db.stmt.executeQuery(selectQuery);
 			// STEP 5(a) - Process results of the Query
+			// add values to JTable
 			while (rs.next() != false) {
 
 				String StudentNo = rs.getString("StudentNumber");
@@ -242,19 +231,16 @@ public class ASJtableLect extends javax.swing.JFrame {
 				System.out.println("STEP 5(a) COMPLETE - Results of Query processed...");
 
 			}
-
+			// error handling
 		} catch (SQLException e) {
-			System.out.println("Problem with SQL.\n" + e.getMessage());
+			JOptionPane.showMessageDialog(null,"Problem with SQL.\n" + e.getMessage());
 		} finally {
 
 		}
 
 	}
 
-	/**
-	 * @param args
-	 *            the command line arguments
-	 */
+	// create frame and set visible
 	public static void main(String args[]) {
 
 		try {
@@ -295,4 +281,4 @@ public class ASJtableLect extends javax.swing.JFrame {
 	private javax.swing.JTable jTable1;
 	private javax.swing.JTable jTable2;
 
-}
+}// end of class

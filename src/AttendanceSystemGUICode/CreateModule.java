@@ -1,19 +1,23 @@
 package AttendanceSystemGUICode;
+/**
+ * Administrator Create New Module
+ *
+ * @author Cloud Grp1
+ */
 
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class CreateModule extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form CreateModule
-	 */
+	// constructor
 	public CreateModule() {
 		initComponents();
 	}
 
+	// initialize componenets
 	private void initComponents() {
-
+		// components
 		jPanel2 = new javax.swing.JPanel();
 		jLabel4 = new javax.swing.JLabel();
 		jLabel5 = new javax.swing.JLabel();
@@ -28,12 +32,12 @@ public class CreateModule extends javax.swing.JFrame {
 				jButton1ActionPerformed(evt);
 			}
 		});
-
+		// dispose on close
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		setTitle("Administrator ");
 
 		jPanel2.setBackground(new java.awt.Color(0, 204, 255));
-
+		// set names, fonts etc
 		jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 		jLabel4.setText("Module Name");
 
@@ -58,7 +62,7 @@ public class CreateModule extends javax.swing.JFrame {
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 		jLabel1.setText("Create Module");
-
+		// netbeans window builder layout and positioning of components
 		javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
 		jPanel2.setLayout(jPanel2Layout);
 		jPanel2Layout.setHorizontalGroup(
@@ -124,29 +128,29 @@ public class CreateModule extends javax.swing.JFrame {
 		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
 				jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
 				javax.swing.GroupLayout.PREFERRED_SIZE));
-
+		// pack frame
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
+	// event handling create module button
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 		try {
 			DatabaseHandler dbh1 = new DatabaseHandler();
 			dbh1.connectToDatabase();
+			// add new module to the database
 			String insertQuery = ("insert into AttendanceSystem.Module(ModuleCode, ModuleName, ModuleHours) values ('"
 					+ jTextField4.getText() + "','" + jTextField5.getText() + "','" + jTextField6.getText() + "')");
 			dbh1.doQuery(insertQuery);
-
-			// dbh.conn =
-			// DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
 			dbh1.stmt = dbh1.conn.createStatement();
 			dbh1.stmt.executeUpdate(insertQuery);
 			JOptionPane.showMessageDialog(null, "Query Executed");
-
+			// error handling
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
 	}
 
+	// create and display form
 	public static void main(String args[]) {
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -168,9 +172,7 @@ public class CreateModule extends javax.swing.JFrame {
 			java.util.logging.Logger.getLogger(CreateModule.class.getName()).log(java.util.logging.Level.SEVERE, null,
 					ex);
 		}
-		// </editor-fold>
 
-		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new CreateModule().setVisible(true);
@@ -179,7 +181,7 @@ public class CreateModule extends javax.swing.JFrame {
 
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	// Variables declaration
 	private javax.swing.JButton jButton1;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel4;
@@ -189,5 +191,4 @@ public class CreateModule extends javax.swing.JFrame {
 	private javax.swing.JTextField jTextField4;
 	private javax.swing.JTextField jTextField5;
 	private javax.swing.JTextField jTextField6;
-	// End of variables declaration//GEN-END:variables
-}
+}// end of class

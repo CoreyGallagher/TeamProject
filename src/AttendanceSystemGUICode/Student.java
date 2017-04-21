@@ -1,23 +1,26 @@
 package AttendanceSystemGUICode;
 
+/**
+ * Student Class
+ *
+ * @author Cloud Grp1
+ */
 
-public class Student  {
-	
-	//instance variables
-	String firstName , lastName, password, course;
-	//Module module;
-	//Class class;
-	int StudentID = 11001122;
-	
-	//constructor
-	public Student(String firstName, String lastName, String password){
-		
-		
+public class Student {
+
+	// instance variables
+	String firstName, lastName, password, course;
+	int StudentID = 0;
+
+	// constructor
+	public Student(String firstName, String lastName, String password) {
+
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		StudentID ++;
+		StudentID++;
 	}
+
 	// returns the students first name
 	public String getfirstName() {
 		return firstName;
@@ -34,38 +37,34 @@ public class Student  {
 	}
 
 	// Set the students ID
-	//public void setStudentID(int studentID) {
-	//	StudentID = studentID;
-	//}
-	
-	//returns the studens last name
+	// public void setStudentID(int studentID) {
+	// StudentID = studentID;
+	// }
+
+	// returns the studens last name
 	public String getLastName() {
 		return lastName;
 	}
-	
-	//sets the students last name
+
+	// sets the students last name
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	// return password
 	public String getPassword() {
 		return password;
 	}
-	
+
 	// set password
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	// toString() method
 	@Override
 	public String toString() {
 		return "Student [firstName=" + firstName + ", lastName=" + lastName + ", StudentID=" + StudentID + "]";
 	}
-	
-	
-	
-	
-	
 
 }

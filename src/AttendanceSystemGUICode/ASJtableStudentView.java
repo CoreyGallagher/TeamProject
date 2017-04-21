@@ -1,4 +1,9 @@
 package AttendanceSystemGUICode;
+/**
+ * Student Menu
+ *
+ * @author Cloud Grp1
+ */
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,21 +12,17 @@ import javax.swing.JFrame;
 
 public class ASJtableStudentView extends javax.swing.JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Creates new form ASJTableStudentView
-	 */
+	// constructor
 	public ASJtableStudentView() {
 		initComponents();
 	}
 
+	// initialize components
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initComponents() {
-
+		// components
 		jPanel1 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
 		jButton1 = new javax.swing.JButton();
@@ -51,21 +52,21 @@ public class ASJtableStudentView extends javax.swing.JFrame {
 				StudentViewTable ViewATD = new StudentViewTable();
 				ViewATD.setVisible(true);
 				ViewATD.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				//System.out.print(" "+AttendenceSystem.getUserNameEntered());
+				// System.out.print(" "+AttendenceSystem.getUserNameEntered());
 			}
 		});
 
 		// Setting the characteristics of the Combo Box
-		jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12));
 		jComboBox1
 				.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ALGSCP701", "MANGCP701", "DATACP701" }));
 		jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
 		jLabel2.setDisplayedMnemonic('m');
-		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12));
 		jLabel2.setText("Module");
 		jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
+		// netbeans window builder layout and positioning of components
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(
@@ -112,10 +113,11 @@ public class ASJtableStudentView extends javax.swing.JFrame {
 		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
 				jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
 				javax.swing.GroupLayout.PREFERRED_SIZE));
-
+		// pack frame
 		pack();
 	}
 
+	// create frame and display
 	public static void main(String args[]) {
 
 		try {
@@ -146,7 +148,7 @@ public class ASJtableStudentView extends javax.swing.JFrame {
 		});
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	// Variables declaration
 	private javax.swing.JButton jButton1;
 	@SuppressWarnings("rawtypes")
 	public static javax.swing.JComboBox jComboBox1;
@@ -154,4 +156,4 @@ public class ASJtableStudentView extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JPanel jPanel1;
 
-}
+}// end of class

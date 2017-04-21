@@ -1,19 +1,23 @@
 package AttendanceSystemGUICode;
+/**
+ * Administrator Create New Course
+ *
+ * @author Cloud Grp1
+ */
 
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class CreateClass extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form CreateClass
-	 */
+	// constructor
 	public CreateClass() {
 		initComponents();
 	}
 
+	// initialize components
 	private void initComponents() {
-
+		// components
 		jPanel1 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
 		jLabel2 = new javax.swing.JLabel();
@@ -23,20 +27,20 @@ public class CreateClass extends javax.swing.JFrame {
 		jTextField3 = new javax.swing.JTextField();
 		jButton1 = new javax.swing.JButton();
 		jLabel4 = new javax.swing.JLabel();
-
+		// dispose on close
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		setTitle("Administrator");
-
+		// set names, fonts etc
 		jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 		jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
 		jLabel1.setText("Course Code");
 
-		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12));
 		jLabel2.setText("Course Name");
 
-		jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12));
 		jLabel3.setText("Module Code");
 
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +56,7 @@ public class CreateClass extends javax.swing.JFrame {
 
 		jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 		jLabel4.setText("    Create Class");
-
+		// netbeans window builder layout and component positioning
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(
@@ -131,43 +135,32 @@ public class CreateClass extends javax.swing.JFrame {
 		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
 				jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
 				javax.swing.GroupLayout.PREFERRED_SIZE));
-
+		// pack frame
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
+	// event handling
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 		try {
+			// new database handler
 			DatabaseHandler dbh1 = new DatabaseHandler();
 			dbh1.connectToDatabase();
+			// add course to database
 			String insertQuery = ("insert into AttendanceSystem.Course(CourseCode, CourseName, ModuleCode) values ('"
 					+ jTextField2.getText() + "','" + jTextField3.getText() + "','" + jTextField1.getText() + "')");
 			dbh1.doQuery(insertQuery);
-
-			// dbh.conn =
-			// DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
 			dbh1.stmt = dbh1.conn.createStatement();
 			dbh1.stmt.executeUpdate(insertQuery);
 			JOptionPane.showMessageDialog(null, "Query Executed");
-
+			// error handling
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
 	}
 
-	/**
-	 * @param args
-	 *            the command line arguments
-	 */
+	// create and display frame
 	public static void main(String args[]) {
-		/* Set the Nimbus look and feel */
-		// <editor-fold defaultstate="collapsed" desc=" Look and feel setting
-		// code (optional) ">
-		/*
-		 * If Nimbus (introduced in Java SE 6) is not available, stay with the
-		 * default look and feel. For details see
-		 * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.
-		 * html
-		 */
+
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -188,9 +181,7 @@ public class CreateClass extends javax.swing.JFrame {
 			java.util.logging.Logger.getLogger(CreateClass.class.getName()).log(java.util.logging.Level.SEVERE, null,
 					ex);
 		}
-		// </editor-fold>
 
-		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new CreateClass().setVisible(true);
@@ -198,7 +189,7 @@ public class CreateClass extends javax.swing.JFrame {
 		});
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	// Variables declaration
 	private javax.swing.JButton jButton1;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
@@ -208,5 +199,5 @@ public class CreateClass extends javax.swing.JFrame {
 	private javax.swing.JTextField jTextField1;
 	private javax.swing.JTextField jTextField2;
 	private javax.swing.JTextField jTextField3;
-	// End of variables declaration//GEN-END:variables
-}
+	// End of variables declaration
+}// end of class

@@ -1,4 +1,9 @@
 package AttendanceSystemGUICode;
+/**
+ * Database handler for all classes
+ *
+ * @author Cloud Grp1
+ */
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -9,6 +14,8 @@ import java.sql.Statement;
 
 @SuppressWarnings("serial")
 public class DatabaseHandler extends javax.swing.JFrame {
+	// credentials for database including AWS RDS database endpoint and JDBC
+	// driver
 	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	final String DB_URL = "jdbc:mysql://attendancesystem.clql55s9fxrz.eu-west-1.rds.amazonaws.com";
 	final String USER_NAME = "cloud1";
@@ -18,6 +25,7 @@ public class DatabaseHandler extends javax.swing.JFrame {
 	Statement stmt = null;
 	ResultSet rs = null;
 
+	// connect to database
 	public void connectToDatabase() {
 		try {
 			// STEP 1 - Load the JDBC driver
@@ -32,13 +40,14 @@ public class DatabaseHandler extends javax.swing.JFrame {
 			stmt = conn.createStatement();
 			System.out.println("STEP 3 COMPLETE - Statement object created...");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Could not load driver.\n" + e.getMessage());
+			JOptionPane.showMessageDialog(null,"Could not load driver.\n" + e.getMessage());
 		} catch (SQLException e) {
-			System.out.println("Problem with SQL.\n" + e.getMessage());
+			JOptionPane.showMessageDialog(null,"Problem with SQL.\n" + e.getMessage());
 		}
 
 	}
 
+	// connect and do query
 	public void doQuery(String query) {
 
 		try {
@@ -62,4 +71,4 @@ public class DatabaseHandler extends javax.swing.JFrame {
 		}
 
 	}
-}
+}// end of class

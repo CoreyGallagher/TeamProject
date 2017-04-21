@@ -43,7 +43,7 @@ public class AdminView extends javax.swing.JFrame {
 
 		// set background colour
 		jPanel1.setBackground(new java.awt.Color(153, 153, 0));
-		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administrator View",
+		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administrator Menu",
 				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
 				new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 

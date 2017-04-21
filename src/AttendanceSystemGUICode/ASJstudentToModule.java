@@ -94,7 +94,7 @@ public class ASJstudentToModule {
 
 					String modQuery = ("insert into AttendanceSystem.StudentModules(StudentIdentity, Module) values ('"
 							+ textField.getText() + "','" + comboBox.getSelectedItem() + "')");
-					dbh.doQuery(modQuery);
+					//dbh.doQuery(modQuery);
 					dbh.stmt.executeUpdate(modQuery);
 					JOptionPane.showMessageDialog(null, "Query Executed");
 					// close connection

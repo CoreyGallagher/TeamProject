@@ -4,24 +4,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * Department Head Menu
  *
  * @author Cloud Grp1
  */
 @SuppressWarnings("serial")
 public class ASJtableHDSelect extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form ASJtableHDSelect
-	 */
+	// constructor
 	public ASJtableHDSelect() {
 		initComponents();
 	}
 
+	// initialize components
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
-
+		// components
 		jPanel1 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
 		jLabel1 = new javax.swing.JLabel();
@@ -29,9 +27,9 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 		jComboBox1 = new javax.swing.JComboBox<String>();
 		jLabel3 = new javax.swing.JLabel();
 		jButton1 = new javax.swing.JButton();
-
+		// exit on close
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+		// add components to JPanel and set fonts, color etc
 		jPanel1.setBackground(new java.awt.Color(153, 153, 0));
 		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dept Head View Attendance",
 				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
@@ -57,9 +55,7 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 				.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MANGCP701", "ALGSCP701", "DATACP701" }));
 		jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-		// jLabel3.setIcon(new
-		// javax.swing.ImageIcon(getClass().getResource("img/lyitLogo.png")));
-		// // NOI18N
+		// add lyit logo
 		jLabel3.setIcon(new javax.swing.ImageIcon(("img/lyitLogo.png"))); // NOI18N
 		jLabel3.setText("jLabel3");
 
@@ -79,9 +75,8 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 			}
 
 		});
-
+		// net beans window builder layout and positioning of components
 		jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,14 +126,10 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 				.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jPanel1,
 						javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addContainerGap()));
-
+		// pack frame
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
-	/**
-	 * @param args
-	 *            the command line arguments
-	 */
 	public static void main(String args[]) {
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -161,7 +152,7 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 					null, ex);
 		}
 
-		/* Create and display the form */
+		// Create and display the form
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new ASJtableHDSelect().setVisible(true);
@@ -169,7 +160,7 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 		});
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	// Variables declaration
 	private javax.swing.JButton jButton1;
 	public static javax.swing.JComboBox<String> jComboBox1;
 	public static javax.swing.JComboBox<String> jComboBox2;
@@ -177,5 +168,5 @@ public class ASJtableHDSelect extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JPanel jPanel1;
-	// End of variables declaration//GEN-END:variables
-}
+
+}// end of class

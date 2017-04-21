@@ -1,6 +1,7 @@
 package AttendanceSystemGUICode;
 
 /**
+ * User Class
  *
  * @author Cloud Grp1
  */
@@ -27,4 +28,4 @@ public class User {
 	public String toString() {
 		return Name;
 	}
-}
+}// end of class

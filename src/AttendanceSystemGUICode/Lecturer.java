@@ -1,32 +1,36 @@
 package AttendanceSystemGUICode;
 
+/**
+ * Lecturer Class
+ *
+ * @author Cloud Grp1
+ */
+
 public class Lecturer extends User {
-	
-	//variables
-	
+
+	// variables
 	private int lecturerNumber;
 	private static int nextUniqueNumber;
-	
-	//constructors
-	public Lecturer(){
+
+	// constructors
+	public Lecturer() {
 		this.lecturerNumber = nextUniqueNumber++;
 	}
-	
-public Lecturer(String name){
-		
-		super (name);
+
+	public Lecturer(String name) {
+
+		super(name);
 		this.lecturerNumber = nextUniqueNumber;
 	}
-	
+
 	// get lecturer number
 	public int getLecturerNumber() {
 		return lecturerNumber;
 	}
-	
-	//set lecturer number
+
+	// set lecturer number
 	public void setLecturerNumber(int lecturerNumber) {
 		this.lecturerNumber = lecturerNumber;
 	}
 
-	
-}
+}// end of class

@@ -1,34 +1,37 @@
 package AttendanceSystemGUICode;
 
+/**
+ * Class
+ *
+ * @author Cloud Grp1
+ */
+
 public class Class {
-	
-	//variables
+
+	// variables
 	public String className;
 
-	//constructors
-	public Class(){
-		
+	// constructors
+	public Class() {
+
 		className = "N/A";
-		}
-	
-	public Class(String className){
-		
+	}
+
+	public Class(String className) {
+
 		this.className = className;
 	}
-	
-	//getters and setters
-	
-	//get class name
+
+	// getters and setters
+
+	// get class name
 	public String getClassName() {
 		return className;
 	}
 
-	//set class name
+	// set class name
 	public void setClassName(String className) {
 		this.className = className;
 	}
-	
-	
-	
-	
+
 }
