@@ -8,6 +8,7 @@ package AttendanceSystemGUICode;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
@@ -114,6 +115,13 @@ public class DeptHeadView extends javax.swing.JFrame {
 					double total = (hoursAttended / Module) * 100;
 
 					jTable1.setValueAt(total, j, 5);
+					
+					if (Date.equals("2017-04-20 17:43:01.0") && total <= 55.00) {
+						// System.out.println("Warning, student's attendance %
+						// low!!");
+						JOptionPane.showMessageDialog(null,
+								"Warning, student's attendance % low!!" + lName + " " + fName);
+					}
 
 				}
 

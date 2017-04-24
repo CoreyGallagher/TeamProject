@@ -12,11 +12,12 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
 import java.awt.Button;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ASJstudentToModule {
@@ -63,11 +64,39 @@ public class ASJstudentToModule {
 		JLabel lblStudentId = new JLabel("Student ID");
 		lblStudentId.setBounds(84, 83, 86, 17);
 		frame.getContentPane().add(lblStudentId);
+
 		// modules jCombobox
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "ALGSCP701", "MANGCP701", "DATACP701" }));
+		// comboBox.setModel(new DefaultComboBoxModel(new String[] {
+		// "ALGSCP701", "MANGCP701", "DATACP701" }));
+		ArrayList<String> Modules = new ArrayList<String>();
+		try {
+
+			DatabaseHandler DB = new DatabaseHandler();
+			DB.connectToDatabase();
+			String selectQuery = "SELECT ModuleCode FROM AttendanceSystem.Module";
+			DB.stmt.executeUpdate("Use AttendanceSystem");
+			ResultSet rs = DB.stmt.executeQuery(selectQuery);
+
+			while (rs.next() != false) {
+				Modules.add(rs.getString("ModuleCode"));
+			}
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
+		comboBox.setModel(new javax.swing.DefaultComboBoxModel(Modules.toArray()));
+
+		comboBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+		comboBox.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+		comboBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				// jComboBox1ActionPerformed(evt);
+			}
+		});
 		comboBox.setBounds(269, 123, 118, 20);
 		frame.getContentPane().add(comboBox);
+
 		// module JLabel
 		JLabel lblStudentModule = new JLabel("Module");
 		lblStudentModule.setBounds(84, 125, 99, 17);
@@ -87,15 +116,39 @@ public class ASJstudentToModule {
 		button.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
+					//String dbUrl = "jdbc:mysql:///test?allowMultiQueries=true";
+					java.util.Date date = new java.util.Date();
+					java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String currentTime = sdf.format(date);
 					// connect to database and execute query
 					DatabaseHandler dbh = new DatabaseHandler();
 					dbh.connectToDatabase();
 					dbh.stmt = dbh.conn.createStatement();
-
+					
+					String ForeignKey = "SET FOREIGN_KEY_CHECKS=0";
 					String modQuery = ("insert into AttendanceSystem.StudentModules(StudentIdentity, Module) values ('"
-							+ textField.getText() + "','" + comboBox.getSelectedItem() + "')");
-					//dbh.doQuery(modQuery);
-					dbh.stmt.executeUpdate(modQuery);
+						+ textField.getText() + "','" + comboBox.getSelectedItem() + "')");
+						
+					//String Query = "";
+					String setQuery = ("SET @user =  "); 
+					String SelectQuery = ("SELECT Student.StudCourseCode into @user FROM Student WHERE Student.StudentNumber = '"	+ textField.getText() + "'");
+					String insertQuery = ("INSERT INTO AttendanceSystem.AttendanceRecords(Date, StudentNo, ModuleCde, CourseCde, HoursAttended, ModuleHours) values ('"
+							+ currentTime + "','" + textField.getText() + "','" + comboBox.getSelectedItem() + "','"
+							+ "@user"+ "','" + '0' + "','" + '0' + "')");
+					
+					
+					//dbh.stmt.addBatch(SelectQuery);
+					
+							
+					dbh.stmt.executeQuery("USE AttendanceSystem");
+					// dbh.doQuery(modQuery);
+					 dbh.stmt.executeBatch();
+					
+					 dbh.stmt.execute(ForeignKey);
+					dbh.stmt.execute(modQuery);
+					dbh.stmt.executeUpdate(setQuery);
+					dbh.stmt.executeQuery(SelectQuery);
+					dbh.stmt.executeUpdate(insertQuery);
 					JOptionPane.showMessageDialog(null, "Query Executed");
 					// close connection
 					dbh.rs.close();

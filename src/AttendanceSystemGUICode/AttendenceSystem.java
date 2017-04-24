@@ -58,10 +58,13 @@ public class AttendenceSystem extends javax.swing.JFrame {
 				s2.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				s2.setLocationRelativeTo(null);
 				s2.setVisible(true);
+				//boolean login = false;
 				// security dialog okay button event
 				s2.jbtOK.addActionListener(new ActionListener() {
+					
 					public void actionPerformed(ActionEvent e) {
 						try {
+							boolean login = false;
 							userNameEntered = s2.jtfUsername.getText();
 							passwordEntered = new String(s2.jtfPassword.getPassword());
 							DatabaseHandler passwd = new DatabaseHandler();
@@ -74,7 +77,9 @@ public class AttendenceSystem extends javax.swing.JFrame {
 							while (passwd.rs.next()) {
 								// check for correct credentials
 								if (userNameEntered.equals(passwd.rs.getString("SystemUsers.Username"))) {
+									login = true;
 									if (passwordEntered.equals(passwd.rs.getString("SystemUsers.Password"))) {
+										login = true;
 										JOptionPane.showMessageDialog(null, "Login Successful");
 										// administrator menu
 										AdminView adView = new AdminView();
@@ -82,11 +87,14 @@ public class AttendenceSystem extends javax.swing.JFrame {
 										adView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 										s2.dispose();
 										System.out.print("logged in");
+										
 										// error handling
-									} else {
+									} 
+									passwd.rs.close();
+									 if(login == false) {
 										JOptionPane.showMessageDialog(null, "Incorrect Password");
 									}
-								} else {
+								} else if (!passwd.rs.next()) {
 									JOptionPane.showMessageDialog(null, "Incorrect Login");
 								}
 							}

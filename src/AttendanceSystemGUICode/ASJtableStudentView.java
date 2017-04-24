@@ -7,8 +7,11 @@ package AttendanceSystemGUICode;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class ASJtableStudentView extends javax.swing.JFrame {
 
@@ -58,8 +61,38 @@ public class ASJtableStudentView extends javax.swing.JFrame {
 
 		// Setting the characteristics of the Combo Box
 		jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12));
-		jComboBox1
-				.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ALGSCP701", "MANGCP701", "DATACP701" }));
+		//jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ALGSCP701", "MANGCP701", "DATACP701" }));
+		ArrayList<String> Modules = new ArrayList<String>();
+		try{
+			
+		
+		DatabaseHandler DB = new DatabaseHandler();
+		DB.connectToDatabase();
+		String selectQuery = "SELECT ModuleCode FROM AttendanceSystem.Module";
+		DB.stmt.executeUpdate("Use AttendanceSystem");
+		ResultSet rs = DB.stmt.executeQuery(selectQuery);
+		
+		
+		while(rs.next() != false)
+		{
+			Modules.add(rs.getString("ModuleCode"));
+		}
+		}
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
+		jComboBox1.setModel(
+				new javax.swing.DefaultComboBoxModel(Modules.toArray()));
+	
+		jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		
+			
+		jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+		jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				//jComboBox1ActionPerformed(evt);
+			}
+		});
 		jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
 		jLabel2.setDisplayedMnemonic('m');

@@ -2,7 +2,11 @@ package AttendanceSystemGUICode;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * Lecturer Menu
@@ -22,6 +26,7 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 	}
 
 	// initialize components
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void initComponents() {
 		// components
 		jPanel1 = new javax.swing.JPanel();
@@ -53,19 +58,75 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 		jLabel3.setText("         Class");
 		jLabel3.setToolTipText("");
 		jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
-		jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		
+		//setting ComboBox From DataBase
+		ArrayList<String> Modules = new ArrayList<String>();
+		try{
+			
+		
+		DatabaseHandler DB = new DatabaseHandler();
+		DB.connectToDatabase();
+		String selectQuery = "SELECT ModuleCode FROM AttendanceSystem.Module";
+		DB.stmt.executeUpdate("Use AttendanceSystem");
+		ResultSet rs = DB.stmt.executeQuery(selectQuery);
+		
+		
+		while(rs.next() != false)
+		{
+			Modules.add(rs.getString("ModuleCode"));
+		}
+		}
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
 		jComboBox1.setModel(
-				new javax.swing.DefaultComboBoxModel<>(new String[] { "MANGCP701", "ALGSCP701", "DATACP701" }));
+				new javax.swing.DefaultComboBoxModel(Modules.toArray()));
+	
+		jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		
+			
 		jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 		jComboBox1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jComboBox1ActionPerformed(evt);
 			}
 		});
+		
+		//Setting ComboBox from database
+		ArrayList<String> Course = new ArrayList<String>();
+		try{
+			
+		
+		DatabaseHandler DB = new DatabaseHandler();
+		DB.connectToDatabase();
+		String selectQuery = "SELECT CourseCode FROM AttendanceSystem.Course";
+		DB.stmt.executeUpdate("Use AttendanceSystem");
+		ResultSet rs = DB.stmt.executeQuery(selectQuery);
+		
+		
+		while(rs.next() != false)
+		{
+			Course.add(rs.getString("CourseCode"));
+		}
+		}
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
+		jComboBox2.setModel(
+				new javax.swing.DefaultComboBoxModel(Course.toArray()));
+	
+		jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+		
+			
+		jComboBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+		jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jComboBox1ActionPerformed(evt);
+			}
+		});
 
 		jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 12));
-		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLGTS1", "COMPS1", "CSDFS1" }));
+		//jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLGTS1", "COMPS1", "CSDFS1" }));
 		jComboBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 		// lyit logo
 		jLabel1.setIcon(new javax.swing.ImageIcon(("img/lyitLogo.png")));
@@ -173,7 +234,29 @@ public class ASJtableLectSelect extends javax.swing.JFrame {
 	}
 
 	private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {
-		// TODO add your handling code here:
+//		ArrayList<String> Modules = new ArrayList<String>();
+//		jComboBox1.setModel(
+//				new javax.swing.DefaultComboBoxModel(Modules.toArray()));
+//		
+//		try{
+//			DatabaseHandler DB = new DatabaseHandler();
+//			DB.connectToDatabase();
+//			String selectQuery = "SELECT ModuleCode FROM AttendanceSystem.Module";
+//			DB.stmt.executeUpdate("Use AttendanceSystem");
+//			ResultSet rs = DB.stmt.executeQuery(selectQuery);
+//			
+//			
+//			while(rs.next() != false)
+//			{
+//				Modules.add(rs.getString("ModuleCode"));
+//			}
+//		}
+//			catch(Exception ex){
+//				JOptionPane.showMessageDialog(null, ex.getMessage());
+//			}
+			
+			
+		
 	}
 
 	@SuppressWarnings("unused")
