@@ -58,51 +58,52 @@ public class AttendenceSystem extends javax.swing.JFrame {
 				s2.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				s2.setLocationRelativeTo(null);
 				s2.setVisible(true);
-				//boolean login = false;
+				// boolean login = false;
 				// security dialog okay button event
 				s2.jbtOK.addActionListener(new ActionListener() {
-					
+
 					public void actionPerformed(ActionEvent e) {
+						userNameEntered = s2.jtfUsername.getText();
+						passwordEntered = new String(s2.jtfPassword.getPassword());
+						boolean login = false;
+						
+
 						try {
-							boolean login = false;
-							userNameEntered = s2.jtfUsername.getText();
-							passwordEntered = new String(s2.jtfPassword.getPassword());
+
 							DatabaseHandler passwd = new DatabaseHandler();
 							passwd.connectToDatabase();
 							passwd.stmt = passwd.conn.createStatement();
 							String sql = "Select Username, Password from AttendanceSystem.SystemUsers WHERE SystemUsers.Username='"
 									+ userNameEntered + "' and SystemUsers.Password='" + passwordEntered + "'";
-							//passwd.doQuery(sql);
+							// passwd.doQuery(sql);
 							passwd.rs = passwd.stmt.executeQuery(sql);
-							while (passwd.rs.next()) {
+							passwd.rs.next();
 								// check for correct credentials
-								if (userNameEntered.equals(passwd.rs.getString("SystemUsers.Username"))) {
+								if (userNameEntered.equals(passwd.rs.getString("SystemUsers.Username"))
+										&& passwordEntered.equals(passwd.rs.getString("SystemUsers.Password"))) {
+
 									login = true;
-									if (passwordEntered.equals(passwd.rs.getString("SystemUsers.Password"))) {
-										login = true;
-										JOptionPane.showMessageDialog(null, "Login Successful");
-										// administrator menu
-										AdminView adView = new AdminView();
-										adView.setVisible(true);
-										adView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-										s2.dispose();
-										System.out.print("logged in");
-										
-										// error handling
-									} 
-									passwd.rs.close();
-									 if(login == false) {
-										JOptionPane.showMessageDialog(null, "Incorrect Password");
-									}
-								} else if (!passwd.rs.next()) {
-									JOptionPane.showMessageDialog(null, "Incorrect Login");
+									JOptionPane.showMessageDialog(null, "Login Successful");
+									// administrator menu
+									AdminView adView = new AdminView();
+									adView.setVisible(true);
+									adView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+									s2.dispose();
+									System.out.print("logged in");
+
+									// error handling
 								}
-							}
+
+								 if (login == false) {
+									JOptionPane.showMessageDialog(null, "Login Details Incorrect ");
+								}
+
+							
 							// close database connection
 							passwd.stmt.close();
 							passwd.conn.close();
 						} catch (Exception g) {
-							JOptionPane.showMessageDialog(null, "PROBLEM OCCURED !!!! ");
+							JOptionPane.showMessageDialog(null, "Login Details Incorrect! ");
 						}
 					}
 				});
@@ -142,12 +143,12 @@ public class AttendenceSystem extends javax.swing.JFrame {
 							// get credentials from database
 							String sql = "Select StudentNumber, Password from AttendanceSystem.Student Where Student.StudentNumber='"
 									+ userNameEntered + "' and Student.Password='" + passwordEntered + "'";
-							//passwd.doQuery(sql);
+							// passwd.doQuery(sql);
 							passwd.rs = passwd.stmt.executeQuery(sql);
-							while (passwd.rs.next()) {
+							passwd.rs.next();
 								// check credentials
-								if (userNameEntered.equals(passwd.rs.getString("Student.StudentNumber"))) {
-									if (passwordEntered.equals(passwd.rs.getString("Student.Password"))) {
+								if (userNameEntered.equals(passwd.rs.getString("Student.StudentNumber")) && passwordEntered.equals(passwd.rs.getString("Student.Password"))) {
+									
 										JOptionPane.showMessageDialog(null, "Login Successful");
 										// new student view
 										ASJtableStudentView StudView = new ASJtableStudentView();
@@ -157,18 +158,16 @@ public class AttendenceSystem extends javax.swing.JFrame {
 										s1.dispose();
 										System.out.print("logged in");
 										// error handling
-									} else {
-										JOptionPane.showMessageDialog(null, "Incorrect Password");
-									}
+									
 								} else {
 									JOptionPane.showMessageDialog(null, "Incorrect Login");
 								}
-							}
+							
 							// close database connection
 							passwd.stmt.close();
 							passwd.conn.close();
 						} catch (Exception g) {
-							JOptionPane.showMessageDialog(null, "PROBLEM OCCURED !!!! ");
+							JOptionPane.showMessageDialog(null, "Incorrect Login Details! ");
 						}
 					}
 				});
@@ -204,13 +203,13 @@ public class AttendenceSystem extends javax.swing.JFrame {
 							// get credentials from database
 							String sql = "Select LecturerID, Password from AttendanceSystem.Lecturer Where Lecturer.LecturerID='"
 									+ userNameEntered + "' and Lecturer.Password='" + passwordEntered + "'";
-							//passwd.doQuery(sql);
+							// passwd.doQuery(sql);
 
 							passwd.rs = passwd.stmt.executeQuery(sql);
-							while (passwd.rs.next()) {
+							passwd.rs.next();
 								// check credentials
-								if (userNameEntered.equals(passwd.rs.getString("Lecturer.LecturerID"))) {
-									if (passwordEntered.equals(passwd.rs.getString("Lecturer.Password"))) {
+								if (userNameEntered.equals(passwd.rs.getString("Lecturer.LecturerID")) && passwordEntered.equals(passwd.rs.getString("Lecturer.Password"))) {
+									
 										JOptionPane.showMessageDialog(null, "Login Successful");
 										// new lecturer menu
 										ASJtableLectSelect Asjls = new ASJtableLectSelect();
@@ -219,18 +218,16 @@ public class AttendenceSystem extends javax.swing.JFrame {
 										s1.dispose();
 										System.out.print("logged in");
 										// error handling
-									} else {
-										JOptionPane.showMessageDialog(null, "Incorrect Password");
-									}
+									
 								} else {
 									JOptionPane.showMessageDialog(null, "Incorrect Login");
 								}
-							}
+							
 							// close database connection
 							passwd.stmt.close();
 							passwd.conn.close();
 						} catch (Exception g) {
-							JOptionPane.showMessageDialog(null, "PROBLEM OCCURED !!!! ");
+							JOptionPane.showMessageDialog(null, "Incorrect Login Details! ");
 						}
 					}
 				});
@@ -265,32 +262,28 @@ public class AttendenceSystem extends javax.swing.JFrame {
 							// get credentials from database
 							String sql = "Select Username, Password from AttendanceSystem.SystemUsers WHERE SystemUsers.Username='"
 									+ userNameEntered + "' and SystemUsers.Password='" + passwordEntered + "'";
-							//passwd.doQuery(sql);
+							// passwd.doQuery(sql);
 
 							passwd.rs = passwd.stmt.executeQuery(sql);
-							while (passwd.rs.next()) {
+							passwd.rs.next();
 								// check credentials
-								if (userNameEntered.equals(passwd.rs.getString("SystemUsers.Username"))) {
-									if (passwordEntered.equals(passwd.rs.getString("SystemUsers.Password"))) {
+								if (userNameEntered.equals(passwd.rs.getString("SystemUsers.Username")) && passwordEntered.equals(passwd.rs.getString("SystemUsers.Password"))) {
+									
 										JOptionPane.showMessageDialog(null, "Login Successful");
 										ASJtableHDSelect DptSelect = new ASJtableHDSelect();
 										DptSelect.setVisible(true);
 										DptSelect.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 										s1.dispose();
 										System.out.print("logged in");
-
-									} else {
-										JOptionPane.showMessageDialog(null, "Incorrect Password");
-									}
 								} else {
 									JOptionPane.showMessageDialog(null, "Incorrect Login");
 								}
-							}
+							
 							// close database connection
 							passwd.stmt.close();
 							passwd.conn.close();
 						} catch (Exception g) {
-							JOptionPane.showMessageDialog(null, "PROBLEM OCCURED !!!! ");
+							JOptionPane.showMessageDialog(null, "Incorrect Login Details! ");
 						}
 					}
 				});
